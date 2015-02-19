@@ -1,0 +1,22 @@
+<% if @code.nil? %>
+  Ни одного кода еще не добавили..
+<% else %>
+
+  <% title = @code.title.empty? ? "Код ##{@code.id}" : @code.title %>
+  <% content_for :title, "Просмотр кода #{title}" %>
+
+  <div class="post">
+
+    <h3><%= title %></h3>
+    <%=  nl2br(parse_bb_codes(@code.code)).html_safe %>
+
+    <% unless @attachments.nil? %>
+      <% @attachments.each do |image| %>
+        <%= image_tag image.image, :size => "150x150" %>
+        <%= link_to "Destroy", image, method: :delete %>
+      <% end %>
+    <% end %>
+
+  </div>
+
+<% end %>

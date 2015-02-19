@@ -1,0 +1,10 @@
+<%= render 'private_messages/links' %>
+<div class="span7">
+  <h3><%= t 'Send message' %></h3>
+</div>
+<div style="clear:both"></div>
+<hr style="margin:0;margin-bottom:30px">
+
+<%= render 'form', user_to_id: nil, to_message_id: nil %>
+
+<%= link_to t('Back'), create_url(private_messages_path, 'inbox') %>

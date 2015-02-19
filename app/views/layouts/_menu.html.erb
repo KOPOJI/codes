@@ -1,0 +1,48 @@
+<div class="navbar navbar-fluid-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to app_name, root_path, class: 'navbar-brand' %>
+      <div class="container-fluid nav-collapse">
+        <ul class="nav">
+          <li><%= link_to t('Insert code'), create_url('codes', 'new') %></li>
+
+          <li>
+            <%= link_to t('Edit code'), create_url('codes', (@code.code_url.nil? ? @code.id : @code.code_url), 'edit') unless @code.nil? or @code.id.nil? %>
+          </li>
+          <li style="color:#FFF;margin-top:10px"> |</li>
+          <li><%= link_to t('Upload picture'), create_url('attachments', 'new') %></li>
+          <li><%= link_to t('Listing pictures'), create_url('attachments') %></li>
+          <li style="color:#FFF;margin-top:10px"> |</li>
+          <li><%= link_to t('Пользователи'), create_url('users') %></li>
+          <% if user_signed_in? %>
+              <li><%= link_to t('Profile'), create_url('user', 'profile') %></li>
+              <li><%= link_to t('Log out'), create_url('user', 'logout'), method: :delete %></li>
+          <% else %>
+              <li><%= link_to t('Sign'), create_url('user', 'login') %></li>
+              <li><%= link_to t('Sign up'), create_url('user', 'register') %></li>
+          <% end %>
+          <li style="color:#FFF;margin-top:10px"> |</li>
+          <li>
+            <%= link_to create_url('language', 'russian'), alt: 'Русский язык', title: 'Русский язык' do %>
+                <%= image_tag image_path('flag_russian.gif'), alt: 'Русский язык' %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to create_url('language', 'english'), alt: 'English', title: 'English' do %>
+                <%= image_tag image_path('flag_english.gif'), alt: 'English' %>
+            <% end %>
+          </li>
+          <% if user_signed_in? %>
+              <li><%= link_to t('Chat'), create_url('show_hide_chat'), class: 'chat' %></li>
+              <li><%= link_to "#{t('Private Messages')} (#{PrivateMessage.where(user_to_id: current_user.id, read: false).count})", create_url('pm', 'inbox') %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

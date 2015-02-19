@@ -1,0 +1,94 @@
+<h3><%= @user.username %> <%= user_status_image @user %></h3>
+<div id="profilePage">
+  <div id="leftCol">
+    <div id="photo">
+      <%= image_tag(@user.profile.avatar_url) if @user.profile.avatar? %>
+      <% if current_user?(@user) %>
+        <%= simple_form_for @user.profile, html: {multipart: true} do |f| %>
+          <%= f.file_field :avatar %>
+          <%= f.hidden_field :avatar_cache %>
+          <%= f.submit 'Upload', class: 'button' %>
+        <% end %>
+      <% end %>
+    </div>
+    <div id="profileOptions">
+    </div>
+  </div>
+  <div id="info">
+    <% if user_signed_in? and (current_user? @user or current_user.admin?) %>
+        <%= simple_form_for @user.profile, remote: true do |f| %>
+            <p>
+              <strong><%= t 'Name' %>:</strong>
+             
+              <span class="<%= 'not_specified' if @user.profile.name.blank? %>"><%= @user.profile.name.blank? ? t('Not specified') : @user.profile.name %></span>
+              <%= link_to '#', class: 'edit_info' do %>
+                  <%= image_tag image_path('userfield_edit.gif') %>
+              <% end %>
+              <%= f.text_field :name, class: 'hidden' %>
+            </p>
+
+            <p>
+              <strong><%= t 'Interests' %>:</strong>
+              <span class="<%= 'not_specified' if @user.profile.interests.blank? %>"><%= @user.profile.interests.blank? ? t('Not specified') : @user.profile.interests %></span>
+              <%= link_to '#', class: 'edit_info' do %>
+                  <%= image_tag image_path('userfield_edit.gif') %>
+              <% end %>
+              <%= f.text_field :interests, class: 'hidden' %>
+            </p>
+
+            <p>
+              <strong><%= t 'Experience' %>:</strong>
+              <span class="<%= 'not_specified' if @user.profile.exp.blank? %>"><%= @user.profile.exp.blank? ? t('Not specified') : @user.profile.exp %></span>
+              <%= link_to '#', class: 'edit_info' do %>
+                  <%= image_tag image_path('userfield_edit.gif') %>
+              <% end %>
+              <%= f.text_field :exp, class: 'hidden' %>
+            </p>
+
+            <p>
+              <strong><%= t 'About me' %>:</strong>
+              <span class="<%= 'not_specified' if @user.profile.about_me.blank? %>"><%= @user.profile.about_me.blank? ? t('Not specified') : @user.profile.about_me %></span>
+              <%= link_to '#', class: 'edit_info' do %>
+                  <%= image_tag image_path('userfield_edit.gif') %>
+              <% end %>
+              <%= f.text_field :about_me, class: 'hidden' %>
+            </p>
+
+            <p>
+              <strong><%= t 'Signature' %>:</strong>
+              <span class="<%= 'not_specified' if @user.profile.signature.blank? %>"><%= @user.profile.signature.blank? ? t('Not specified') : @user.profile.signature %></span>
+              <%= link_to '#', class: 'edit_info' do %>
+                  <%= image_tag image_path('userfield_edit.gif') %>
+              <% end %>
+              <%= f.text_field :signature, class: 'hidden' %>
+            </p>
+        <% end %>
+    <% else %>
+        <p>
+          <strong><%= t 'Name' %>:</strong>
+          <span class="<%= 'not_specified' if @user.profile.name.blank? %>"><%= @user.profile.name.blank? ? t('Not specified') : @user.profile.name %></span>
+        </p>
+
+        <p>
+          <strong><%= t 'Interests' %>:</strong>
+          <span class="<%= 'not_specified' if @user.profile.interests.blank? %>"><%= @user.profile.interests.blank? ? t('Not specified') : @user.profile.interests %></span>
+        </p>
+
+        <p>
+          <strong><%= t 'Experience' %>:</strong>
+          <span class="<%= 'not_specified' if @user.profile.exp.blank? %>"><%= @user.profile.exp.blank? ? t('Not specified') : @user.profile.exp %></span>
+        </p>
+
+        <p>
+          <strong><%= t 'About me' %>:</strong>
+          <span class="<%= 'not_specified' if @user.profile.about_me.blank? %>"><%= @user.profile.about_me.blank? ? t('Not specified') : @user.profile.about_me %></span>
+        </p>
+
+        <p>
+          <strong><%= t 'Signature' %>:</strong>
+          <span class="<%= 'not_specified' if @user.profile.signature.blank? %>"><%= @user.profile.signature.blank? ? t('Not specified') : @user.profile.signature %></span>
+        </p>
+    <% end %>
+  </div>
+  <div class="clear"></div>
+</div>

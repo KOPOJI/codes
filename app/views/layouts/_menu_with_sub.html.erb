@@ -1,0 +1,68 @@
+<div class="navbar navbar-fluid-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+
+      <%= link_to app_name, root_path, class: 'navbar-brand' %>
+
+      <div class="container-fluid nav-collapse" role="navigation">
+
+        <ul class="nav navbar-nav" aria-labelledby="dLabel">
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Codes' %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('Insert code'), create_url('codes', 'new') %></li>
+              <li>
+                <%= link_to t('Edit code'), create_url('codes', (@code.code_url.nil? ? @code.id : @code.code_url), 'edit') unless @code.nil? or @code.id.nil? %>
+              </li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Pictures' %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('Listing pictures'), create_url('attachments') %></li>
+              <li><%= link_to t('Upload picture'), create_url('attachments', 'new') %></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Users' %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('Listing users'), create_url('users') %></li>
+              <% if user_signed_in? %>
+                <li><%= link_to t('Profile'), create_url('user', 'profile') %></li>
+                <li><%= link_to "#{t('Private Messages')} (#{PrivateMessage.where(user_to_id: current_user.id, read: false).count})", create_url('pm', 'inbox') %></li>
+                <li><%= link_to t('Log out'), create_url('user', 'logout'), method: :delete %></li>
+              <% else %>
+                <li><%= link_to t('Sign'), create_url('user', 'login') %></li>
+                <li><%= link_to t('Sign up'), create_url('user', 'register') %></li>
+              <% end %>
+            </ul>
+          </li>
+
+          <% if false && user_signed_in? %>
+            <li><%= link_to t('Chat'), create_url('show_hide_chat'), class: 'chat' %></li>
+          <% end %>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Language' %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to create_url('language', 'russian'), alt: 'Русский язык', title: 'Русский язык' do %>
+                  <%= image_tag image_path('flag_russian.gif'), alt: 'Русский язык' %> Русский
+        <% end %>
+              </li>
+              <li>
+                <%= link_to create_url('language', 'english'), alt: 'English', title: 'English' do %>
+                   <%= image_tag image_path('flag_english.gif'), alt: 'English' %> English
+                <% end %>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

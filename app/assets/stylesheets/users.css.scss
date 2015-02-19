@@ -1,0 +1,46 @@
+#profilePage {
+  margin: 50px;
+  width: 835px;
+}
+
+#leftCol {
+  float: left;
+  width: 300px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+#photo {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+#photoOptions {
+  text-align: center;
+  width: 200px;
+}
+
+#info {
+  width: 400px;
+  text-align: justify;
+  float: right;
+  strong {
+    display: inline-block;
+    width: 100px;
+  }
+  span {
+    display: inline-block;
+    width: 250px;
+  }
+}
+input.hidden {
+  display: none;
+}
+.photo-icon {
+  max-height: 30px;
+}
+
+.not_specified {
+  color:#999;
+  font-style:oblique;
+}

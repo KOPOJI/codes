@@ -1,0 +1,44 @@
+
+<%= render 'private_messages/links' %>
+
+<% if @messages.present? %>
+
+
+    <% @messages.each do |message| %>
+        <div class="private_message span9" style="background-color:<%= cycle('#f9f9f9', '#f7f7f7') %>">
+          <h4 style="margin-bottom: -15px;margin-top:3px;font-weight:<%= message.read ? 'normal' : 'bold' %>">
+            <%= link_to sanitize(message.title), create_url('pm', action_name, message.id), class: 'link' %>
+            <small>
+              <% if action_name == 'outbox' %>
+                  <%= t 'To' %>
+                  <span <%= 'class=not_specified' if message.user_to.blank? %>>
+                    <%= message.user_to.present? ? link_to(message.user_to.username, create_url('user', message.user_to.id), class: 'link') : t('Not specified') %>
+                  </span>
+              <% else %>
+                  <%= t 'From' %>
+                  <span <%= 'class=not_specified' if message.user_from.blank? %>>
+                    <%= message.user_to.present? ? link_to(message.user_from.username, create_url('user', message.user_from.id), class: 'link') : t('Not specified') %>
+                  </span>
+              <% end %>
+            </small>
+          </h4>
+          <br>
+          <%= truncate sanitize(message.text), length: 50 %>
+          <div style="float: right">
+            <%= link_to t('Show'), create_url('pm', action_name, message.id) %>
+            <%#= link_to 'Edit', edit_private_message_path(message) %>
+            |
+            <%= link_to t('Destroy'), message, method: :delete, data: {confirm: t('Are you sure?')} %>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="clearfix"></div>
+    <div class="apple_pagination">
+      <%= will_paginate @messages, container: false, inner_window: 1, outer_window: 0, param_name: 'pm_page' %>
+    </div>
+<% else %>
+    <%= t 'Nothing found..' %>
+<% end %>
+<br>
+

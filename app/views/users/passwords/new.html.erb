@@ -1,0 +1,13 @@
+<%= render '/users/form', start: true, header: t('Forgot your password?') %>
+<%= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :post} do |f| %>
+    <%= devise_error_messages! %>
+
+    <div>
+      <%= f.label :email, t(:email) %>
+      <%= f.email_field :email, autofocus: true, class: 'form-input' %>
+    </div>
+
+    <div><%= f.submit t('Send me reset password instructions'), class: 'button' %></div>
+<% end %>
+
+<%= render '/users/form', start: false %>

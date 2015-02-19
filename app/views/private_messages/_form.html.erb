@@ -1,0 +1,62 @@
+<% @message = user_to_id.present? || @private_message.text.blank? ? PrivateMessage.new : @private_message; %>
+
+<%= render 'private_messages/links' %>
+
+<%= simple_form_for @message do |f| %>
+    <% if @message.errors.any? %>
+        <div id="error_explanation">
+          <% if locale == :ru %>
+              <h2>Пожалуйста, исправьте следующие ошибки (<%= @message.errors.count %>):</h2>
+          <% else %>
+              <h2><%= pluralize(@message.errors.count, 'error') %> prohibited
+                this message from being sent:</h2>
+          <% end %>
+
+          <ul>
+            <% @message.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-inputs">
+      <% if user_to_id.present? && to_message_id.present? %>
+          <%= f.hidden_field :user_to_id, value: user_to_id.to_i %>
+          <%= f.hidden_field :to_message_id, value: to_message_id.to_i %>
+      <% else %>
+          <%= f.label :user_to_id, t(:user_to_id) %>
+          <%= f.collection_select :user_to_id, User.where.not(id: current_user.id).order(:username), :id, :username, include_blank: true %>
+      <% end %>
+      <%= f.label :title, t(:message_title) %>
+      <%= f.text_field :title, style: 'width: 600px', autofocus: true, value: (to_message_id.present? && !@private_message.title.starts_with?('Re: ') ? 'Re: ' + @private_message.title : @private_message.title) %>
+
+      <% if @private_message.text.present? %>
+          <div style="padding: 5px;margin:14px">
+          <%= (parse_bb_codes(@private_message.text).html_safe.bbcode_to_html(quote, false).gsub(/(?<=<strong>)&quot;(.*?)&quot;/uim, '\\1')).html_safe %>
+          </div>
+          <div class="field">
+            <%#= render 'codes/bbcode' %>
+          </div>
+          <%= f.text_area :text, style: 'width: 800px;height:300px', value: "[QUOTE=\"#{@private_message.user_from.username}\"]#{@private_message.text}[/QUOTE]\n" %>
+      <% else %>
+          <div class="field">
+            <%#= render 'codes/bbcode' %>
+          </div>
+          <%= f.label :text, t(:text) %>
+          <%= f.text_area :text, style: 'width: 800px;height:300px', 'data-editor' => 'javascript' %>
+      <% end %>
+
+
+      <%= f.label :file, t(:file) %>
+      <%= f.file_field :file %>
+      <%= f.hidden_field :file_cache %>
+      <br>
+      <small>Допустимые типы файлов: jpg jpeg gif png tif tiff doc docx txt rtf rar zip 7z gz tar mp3 mp4 3gp swf wma
+      </small>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, t('Send') %>
+    </div>
+<% end %>

@@ -1,0 +1,15 @@
+<div class="post">
+  <br><br>
+  <% if @message.blank? %>
+      Сообщение не найдено. Возможно, вы его удалили?
+  <% else %>
+
+      <%#= render 'show_message' %>
+
+
+      <%= render 'private_messages/form',  user_to_id:  @message.user_from_id, to_message_id: @message.id if @message.user_from.present? %>
+  <% end %>
+  <br><br>
+  <%= link_to t('Back'), create_url(private_messages_path, request.fullpath.include?('outbox') ? 'outbox' : 'inbox'), class: 'link' %>
+</div>
+<%= javascript_tag render('codes/code.html.js.erb') %>

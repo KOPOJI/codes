@@ -1,0 +1,14 @@
+<div class="bbcodes">
+  <div class="bold">
+    <%= link_to 'B', '#', class: 'bbcode html', "data-editor" => 'b'  %>
+    <%= link_to 'I', '#', class: 'bbcode html cursive', "data-editor" => 'i'  %>
+    <%= link_to 'U', '#', class: 'bbcode html underline', "data-editor" => 'u' %>
+    <%= link_to 'S', '#', class: 'bbcode html del', "data-editor" => 's' %>
+    <%= link_to 'IMG', '#', class: 'bbcode html', "data-editor" => 'img' %>
+    <%= link_to 'URL', '#', class: 'bbcode html', "data-editor" => 'url' %>
+  </div>
+  <% codes.each do |title, code| %>
+      <%= link_to title, '#', class: 'bbcode', 'data-editor' => code.split('|').first %>
+  <% end %>
+</div>
+<br>

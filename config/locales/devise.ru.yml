@@ -1,0 +1,109 @@
+ru:
+  username: 'Логин'
+  email: 'E-mail'
+  password: 'Пароль'
+  password_confirmation: 'Подтверждение пароля'
+  'Sign in': 'Вход на сайт'
+  'Sign up': 'Регистрация'
+  Sign: 'Войти'
+  remember_me: 'Запомнить меня'
+  'Resend confirmation instructions': 'Повторно выслать инструкции'
+  Welcome: 'Добро пожаловать'
+  'You can confirm your account email through the link below': 'Вы можете подтвердить Ваш аккаунт, перейдя по ссылке ниже'
+  'Confirm my account': 'Подтвердить аккаунт'
+  Hello: 'Приветствуем'
+  'Someone has requested a link to change your password. You can do this through the link below': 'Вы запросили ссылку для смены пароля. Вы можете сменить пароль, перейдя по ссылке ниже'
+  'Change my password': 'Изменить пароль'
+  "If you didn't request this, please ignore this email.": 'Если вы не запрашивали изменение пароля, пожалуйста, проигнорируйте это письмо.'
+  "Your password won't change until you access the link above and create a new one.": 'Ваш пароль не изменится, пока вы не перейдете по ссылке выше и не зададите новый пароль'
+  'Your account has been locked due to an excessive number of unsuccessful sign in attempts': 'Ваш аккаунт был заблокирован из-за чрезмерного количества попыток входа с неверными данными'
+  'Click the link below to unlock your account': 'Для разблокировки кликните по ссылке ниже'
+  'Unlock my account': 'Разблокировать аккаунт'
+  'Change your password': 'Изменение пароля'
+  'New password': 'Новый пароль'
+  'Confirm new password': 'Подтверждение пароля'
+  'Forgot your password?': 'Забыли пароль?'
+  'Send me reset password instructions' : 'Выслать инструкции по сбросу пароля'
+  Edit: 'Редактирование'
+  'Currently waiting confirmation for': 'В настоящее время ждем подтверждения для'
+  "leave blank if you don't want to change it": 'Оставьте пустым, если вы не хотите менять его'
+  'we need your current password to confirm your changes': 'Требуется текущий пароль для подтверждения изменений'
+  Update: 'Изменить'
+  'Cancel my account': 'Удалить аккаунт'
+  'Unhappy?': 'Недовольны?'
+  'Are you sure?': 'Вы уверены?'
+  Back: 'Назад'
+  "Didn't receive confirmation instructions?": 'Не получили инструкций по активации?'
+  "Didn't receive unlock instructions?": 'Не получили инструкций по разблокировке?'
+  'Sign in with': 'Войти через'
+  'Log out': 'Выйти'
+  'Resend unlock instructions': 'Повторно выслать инструкции по разблокировке'
+  devise:
+    confirmations:
+      confirmed: 'Ваша учётная запись подтверждена. Теперь вы можете войти в систему.'
+      send_instructions: 'В течение нескольких минут вы получите письмо с инструкциями по подтверждению вашей учётной записи.'
+      send_paranoid_instructions: 'Если ваш адрес email есть в нашей базе данных, то в течение нескольких минут вы получите письмо с инструкциями по подтверждению вашей учётной записи.'
+    failure:
+      already_authenticated: 'Вы уже вошли в систему.'
+      inactive: 'Ваша учётная запись ещё не активирована.'
+      invalid: 'Неверный адрес email или пароль.'
+      invalid_token: 'Неверный ключ аутентификации.'
+      locked: 'Ваша учётная запись заблокирована.'
+      not_found_in_database: 'Неверный пароль или email.'
+      timeout: 'Ваш сеанс закончился. Пожалуйста, войдите в систему снова.'
+      unauthenticated: 'Вам необходимо войти в систему или зарегистрироваться.'
+      unconfirmed: 'Вы должны подтвердить вашу учётную запись.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Инструкции по подтверждению учётной записи'
+      reset_password_instructions:
+        subject: 'Инструкции по восстановлению пароля'
+      unlock_instructions:
+        subject: 'Инструкции по разблокировке учётной записи'
+    omniauth_callbacks:
+      failure: 'Вы не можете войти в систему с учётной записью из %{kind}б так как "%{reason}".'
+      success: 'Вход в систему выполнен с учётной записью из %{kind}.'
+    passwords:
+      format: 'Hеверный формат - должен содержать минимум 8 символов, включая одну строчную букву, заглавную букву и цифру.'
+      no_token: 'Эта страница доступна только при переходе с email для сброса пароля. Если вы перешли по ссылке из письма, пожалуйста, убедитесь, что вы использовали полный URL.'
+      send_instructions: 'В течение нескольких минут вы получите письмо с инструкциями по восстановлению вашего пароля.'
+      send_paranoid_instructions: 'Если ваш адрес email есть в нашей базе данных, то в течение нескольких минут вы получите письмо с инструкциями по восстановлению вашего пароля.'
+      updated: 'Ваш пароль изменён. Теперь вы вошли в систему.'
+      updated_not_active: 'Пароль успешно изменён.'
+    registrations:
+      destroyed: 'До свидания! Ваша учётная запись удалена. Надеемся снова увидеть вас.'
+      signed_up: 'Добро пожаловать! Вы успешно зарегистрировались.'
+      signed_up_but_inactive: 'Вы успешно зарегистрировались. Тем не менее, вы не можете войти, потому что ваша учетная запись не активирована.'
+      signed_up_but_locked: 'Вы успешно зарегистрировались. Тем не менее, вы не можете войти, потому что ваша учетная запись заблокирована.'
+      signed_up_but_unconfirmed: 'В течение нескольких минут вы получите письмо с инструкциями по подтверждению вашей учётной записи.'
+      updated: 'Ваша учётная запись изменена.'
+      update_needs_confirmation: 'Ваш аккаунт успешно обновлен, нонеобходимо подтвердить ваш новый адрес email. Пожалуйста, проверьте свою электронную почту и нажмите на ссылку "Подтвердить", чтобы завершить обновления email.'
+    sessions:
+      signed_in: 'Вход в систему выполнен.'
+      signed_out: 'Выход из системы выполнен.'
+    unlocks:
+      send_instructions: 'В течение нескольких минут вы получите письмо с инструкциями по разблокировке вашей учётной записи.'
+      send_paranoid_instructions: 'Если ваша учётная запись существует, то в течение нескольких минут вы получите письмо с инструкциями по её разблокировке.'
+      unlocked: 'Ваша учётная запись разблокирована. Теперь вы вошли в систему.'
+ 
+  errors:
+    messages:
+      already_confirmed: 'уже подтверждена. Пожалуйста, попробуйте войти в систему'
+      confirmation_period_expired: 'должен быть подтвержден в течении %{period}, пожалуйста, запросите подтверждение аккаунта завтра'
+      expired: 'устарела. Пожалуйста, запросите новую'
+      not_found: 'не найдена'
+      not_locked: 'не заблокирована'
+      not_saved:
+        one: 'Сохранение не удалось из-за %{count} ошибки'
+        few: 'Сохранение не удалось из-за %{count} ошибок'
+        many: 'Сохранение не удалось из-за %{count} ошибок'
+        other: 'Сохранение не удалось из-за %{count} ошибок'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'не введен. Заполните поле %{attribute}'
+            password:
+              blank: 'не введен. Заполните поле %{attribute}'

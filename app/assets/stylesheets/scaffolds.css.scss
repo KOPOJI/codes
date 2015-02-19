@@ -1,0 +1,206 @@
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  min-width: 1000px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+a {
+  display: inline-block;
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #ff4800;
+    //background-color: #000;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+footer {
+  background: #212121;
+  padding: 18px 0;
+  color: #fff;
+  margin-top: 15px;
+  text-indent: 50px;
+  .pull-right {
+    float: right;
+  }
+}
+body > .container-fluid {
+  margin-bottom: 100px;
+  padding: 3px;
+}
+.span9 > .post {
+  background-color: #FAFAFA;
+  padding: 5px 25px;
+  border-radius: 10px;
+  width: 900px;
+}
+a.link {
+  color: #000080;
+  font-style: italic;
+  margin: 3px;
+  &:hover {
+    color: #FF4400;
+    background-color: #ffffcc;
+  }
+}
+
+
+.quote_container {
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+div.bbcode_quote div.message {
+  padding:8px 0px;
+}
+
+.bbcode_container {
+  margin-right: 20px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-top: 10px;
+  display: block;
+}
+
+.bbcode_container div.bbcode_quote {
+  margin-top: 0pt;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-color: #fcfcfc;
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  font-family: Tahoma,Calibri,Verdana,Geneva,sans-serif;
+  #font-style: italic;
+  font-variant: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: normal;
+  font-size-adjust: none;
+  font-stretch: normal;
+  -x-system-font: none;
+  position: relative;
+  top: 0pt;
+}
+
+
+.bbcode_quote_container {
+  background-color: transparent;
+  background-image: image_url('quote-left.png');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: left center;
+  display: block;
+  width: 9px;
+  height: 13px;
+  position: absolute;
+  left: -8px;
+}
+
+.bbcode_postedby {
+  font-family: Tahoma,Calibri,Verdana,Geneva,sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: normal;
+  font-size-adjust: none;
+  font-stretch: normal;
+  -x-system-font: none;
+}
+
+.bbcode_container div.bbcode_quote div.message {
+  padding: 8px 0px;
+  color: #000;
+}
+
+.btbtbt {
+  border-left:solid 1px;
+  border-right:solid 1px;
+  border-bottom:solid 1px;
+  border-top:solid 1px;
+  border-color: #417394;
+  border-radius: 3px;
+}
+
+.ace_static_highlight .ace_line {
+  word-break: none;
+  font-size: 14px;
+  .ace_gutter {
+    font-size: 13px;
+    padding-right: 3px;
+  }
+}
+
+
+div.code {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.nav-list {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.nav-list>li>a {
+  padding: 1px 15px;
+  font-size: 13px;
+}
+
+li {
+  line-height: 18px;
+}

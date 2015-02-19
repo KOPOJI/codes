@@ -1,0 +1,34 @@
+<p>
+  Тема сообщения:
+  <strong><%= @message.title %></strong>
+</p>
+<% if action_name == 'inbox' %>
+    <p>
+      От кого:
+      <strong><span<%= ' class=not_specified' if @message.user_from.blank? %>>
+            <%= @message.user_from.present? ? link_to(@message.user_from.username, create_url('user', @message.user_from.id), class: 'link') : t('Not specified') %>
+          </span></strong>
+    </p>
+<% else %>
+    <p>
+      Кому:
+      <strong><span<%= ' class=not_specified' if @message.user_to.blank? %>>
+            <%= @message.user_to.present? ? link_to(@message.user_to.username, create_url('user', @message.user_to.id), class: 'link') : t('Not specified') %>
+          </span></strong>
+    </p>
+<% end %>
+<p>
+  Текст сообщения:
+<hr style="margin:3px;margin-top:-2px;">
+<div style="padding:15px">
+  <%= nl2br(sanitize(@message.text)).html_safe %>
+</div>
+</p>
+
+<% if @message.file.present? %>
+    <p>
+      <strong>Скачать:</strong>
+      <%= link_to "#{t 'file'} (#{@message.file_url[@message.file_url.rindex('.') + 1, @message.file_url.length - @message.file_url.rindex('.')]})", @message.file_url, class: 'link' %>
+    </p>
+<% end %>
+<hr style="margin:0;margin-bottom:30px">

@@ -1,0 +1,33 @@
+<% if @code.nil? %>
+    <%= t 'no_codes' %>..
+<% else %>
+
+    <% title = @code.title.empty? ? "#{t 'Code'} ##{@code.id}" : @code.title %>
+    <% title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}" %>
+    <% content_for :title, "#{t 'Show'} #{title}" %>
+
+    <div class="post">
+
+      <h3><%= title %></h3>
+
+      <div style="font-size:10px;font-style:italic;border-bottom: 1px solid #CCC;padding:3px;margin:3px;padding-left:15px">
+        <%= t 'Added by' %> <b><%= @code.user_id.nil? ? t('Guest') : @code.user.username %></b> <%= @code.created_at.to_s(:ru_datetime) %><br>
+        <%= t 'Last edited' %>: <%= @code.updated_at.to_s(:ru_datetime) %>
+      </div>
+
+        <%= raw parse_bb_codes @code.code %>
+
+      <% if @attachments.present? %>
+          <fieldset>
+            <legend> <%= t 'Attachments' %> </legend>
+            <% @attachments.each do |image| %>
+                <%= link_to image_path(image.image), rel: 'prettyPhoto[]' do %>
+                    <%= image_tag image.image, class: 'attach' %>
+                <% end %>
+            <% end %>
+          </fieldset>
+      <% end %>
+
+    </div>
+
+<% end %>

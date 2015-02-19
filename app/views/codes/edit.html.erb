@@ -1,0 +1,7 @@
+<% content_for :title, t('Edit code') %>
+
+<h3><%= t 'Edit' %> <%= @code.title.empty? ? "##{@code.id}" : @code.title %></h3>
+
+<%= render 'form' %>
+
+<%= link_to t('Show'), create_url('codes', @code.code_url.empty? ? @code.id : @code.code_url), class: 'link' %>

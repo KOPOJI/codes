@@ -1,0 +1,96 @@
+en:
+  code_status: 'Visible'
+  try: 'Try'
+  try_code: 'insert code'
+  or: 'or'
+  try_attach: 'upload picture'
+  show_from: 'Only visible when moving from site'
+  code_not_found: "Requested code wasn't found."
+  Codes: 'Codes'
+  Pictures: 'Pictures'
+  Users: 'Users'
+  Listing users: 'Listing users'
+  Language: 'Language'
+  Profile: 'Profile'
+  Not specified: 'Not specified'
+  Added by: 'Added by'
+  Send: 'Send'
+  Chat: 'Chat'
+  show_hide_chat: 'Show/Hide chat (up to refresh the page)'
+  #pm
+  Private Messages: 'Private Messages'
+  New Private message: 'New Private message'
+  inbox: 'Inbox messages'
+  outbox: 'Outbox messages'
+  Go to: 'Go to'
+  To: 'To'
+  From: 'From'
+  Nothing found: 'Nothing found'
+  file: 'file'
+  Send message: 'Send message'
+  user_to_id: 'To'
+  message_title: 'Subject'
+  text: 'Body'
+  Private message was successfully created: 'Private message was successfully created.'
+  Private message was successfully created: 'Private message was successfully updated.'
+  This user not found: 'This user not found'
+
+  Guest: 'Guest'
+  editable: 'Allow editing'
+  Last edited: 'Last edited'
+  Code: 'Code'
+  Attachments: 'Attachments'
+  Upload picture: 'Upload picture'
+  Uploading picture: 'Загрузка изображения'
+  no_codes: "Nobody hasn't added any code yet"
+  no_pictures: "Nobody hasn't added any picture yet"
+  Insert code: 'Insert code'
+  New code: 'Add a new code'
+  Show all codes: 'Show all codes'
+  Listing codes: 'Saved codes'
+  title: 'Title'
+  code: 'Code'
+  Edit code: 'Edit code'
+  View code: 'Show code'
+  Show: 'Show'
+  Edit: 'Edit'
+  Destroy: 'Delete'
+  Insert: 'Add'
+  Update: 'Save'
+  Back: 'Back'
+  Code was successfully created: 'Code was successfully created'
+  Code was successfully updated: 'Code was successfully updated'
+  Picture was successfully created: 'Picture was successfully created'
+  Picture was successfully updated: 'Picture was successfully updated'
+  Upload: 'Upload'
+  Editing picture: 'Edit picture'
+  Listing pictures: 'Listing pictures'
+  Are you sure?: 'Are you sure?'
+  New attachment: 'New attachment'
+  code_id: 'Code'
+  image: 'Image'
+
+  page_not_found: "The page you were looking for doesn't exist (404 Not Found)"
+
+  errors:
+    messages:
+      extension_white_list_error: 'Wrong image type'
+
+  will_paginate:
+    previous_label: '&laquo;'
+    next_label: '&raquo;'
+    page_gap: '..'
+
+  activerecord:
+    errors:
+      models:
+        attachment:
+          attributes:
+            image:
+              blank: 'No images uploaded'
+        code:
+          attributes:
+            code:
+              blank: 'Enter code'
+              too_short: "Code's length is too short (minimum are %{count} symbols)"
+              too_long: "Code's length is too large (maximum are %{count} symbols)"

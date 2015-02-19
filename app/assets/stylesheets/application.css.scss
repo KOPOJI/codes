@@ -1,0 +1,40 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require prettyphoto-rails
+ *= require_tree .
+ */
+
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+// override for the 'Home' navigation link
+.navbar-brand {
+  font-size: bold;
+  color: #fcfcfc!important;
+}
+
+@media (max-width: 1000px) {
+  body {background:#c00;min-width:1000px;}
+  .post {max-width: 700px;}
+}
+.button {
+  @extend .btn, .btn-default;
+  margin: 15px 0;
+}
+.simple_form {
+  @extend .form-horizontal;
+}
+.form-input {
+  @extend .form-control;
+  width:250px;
+}

@@ -1,0 +1,210 @@
+jQuery(document).ready(function () {
+  function bb_code(fieldId, tag) {
+    tag = tag.toUpperCase()
+    var field = document.getElementById(fieldId),
+        open_tag = '[' + tag + ']',
+        close_tag = '[/' + tag + ']'
+
+    if (tag == 'IMG') {
+      var path = prompt('Введите путь к изображению', 'http://')
+      if (!path)
+        return
+      if (document.selection) {
+        field.focus()
+        sel = document.selection.createRange()
+        sel.text = open_tag + path + close_tag
+      }
+      else if (field.selectionStart || field.selectionStart == 0) {
+        var startPos = field.selectionStart,
+            endPos = field.selectionEnd
+        field.focus()
+        field.value = field.value.substring(0, startPos)
+            + open_tag + path + close_tag
+            + field.value.substring(endPos, field.value.length)
+        field.selectionStart = startPos + open_tag.length
+        field.selectionEnd = field.selectionStart + path.length
+      }
+    }
+    else if (tag == 'URL') {
+      var url = prompt('Введите адрес ссылки', 'http://')
+      if (!url)
+        return
+      if (document.selection) {
+        field.focus()
+        sel = document.selection.createRange()
+        sel.text = '[' + tag + '="' + url + '"]' + url + close_tag
+      }
+      else if (field.selectionStart || field.selectionStart == 0) {
+        var startPos = field.selectionStart,
+            endPos = field.selectionEnd
+        field.focus()
+        var val = field.value.substring(startPos, endPos)
+            ? field.value.substring(startPos, endPos)
+            : url.replace(/https?:\/\//i, '')
+        field.value = field.value.substring(0, startPos)
+            + '[' + tag + '="' + url + '"]' + val + close_tag
+            + field.value.substring(endPos, field.value.length)
+        field.selectionStart = startPos + open_tag.length + url.length + 3
+        field.selectionEnd = field.selectionStart + val.length
+      }
+    }
+    else {
+      if (document.selection) {
+        field.focus();
+        sel = document.selection.createRange();
+        sel.text = open_tag + close_tag;
+      }
+      else if (field.selectionStart || field.selectionStart == 0) {
+        var startPos = field.selectionStart;
+        var endPos = field.selectionEnd;
+        field.focus();
+        var new_text = open_tag + field.value.substring(startPos, endPos) + close_tag
+        field.value = field.value.substring(0, startPos) + new_text + field.value.substring(endPos, field.value.length)
+        field.selectionStart = startPos + open_tag.length
+        field.selectionEnd = endPos + close_tag.length - 1
+      }
+    }
+  }
+
+  <% extend CodesHelper %>
+
+  var supportedModes = <%= codes.to_json %>
+
+  var modes = {}
+  for (var name in supportedModes) {
+    var data = supportedModes[name];
+    var displayName = name
+    var filename = name.toLowerCase();
+    modes[name.toLowerCase()] = displayName;
+  }
+
+  var editor
+  $('textarea[data-editor]').each(function () {
+    var textarea = $(this);
+
+    var mode
+
+    if (mode = $(this).text().match(/\[(<%= codes.values.join('|').gsub /\s+/u, '' %>)\](.*?)/i)) {
+      var text = mode[1]
+      for (var el in supportedModes) {
+        tmp = supportedModes[el].toLowerCase().split('|')
+        for (var t in tmp)
+          if (t == mode[1])
+            text = el
+      }
+
+      mode = text.toLowerCase()
+      if (!mode)
+        mode = 'javascript'
+      $(this).attr("data-editor", mode)
+
+      $(this).attr('data-lang', text)
+    }
+    else
+      mode = textarea.data('editor').toLowerCase();
+
+    var editDiv = $('<div>', {
+      position: 'absolute',
+      width: textarea.width(),
+      height: textarea.height(),
+      'class': textarea.attr('class')
+    }).insertBefore(textarea);
+
+    textarea.css('visibility', 'hidden');
+
+    editor = ace.edit(editDiv[0])
+    editor.getSession().setUseWorker(true);
+    editor.getSession().setUseWrapMode(true);
+    editor.setHighlightActiveLine(true);
+    editor.renderer.setShowGutter(true)
+    editor.setFontSize('15px')
+    editor.getSession().setValue(textarea.val())
+    editor.getSession().setMode("ace/mode/" + mode)
+    editor.setTheme("ace/theme/xcode")
+
+    // copy back to textarea on form submit...
+    textarea.closest('form').submit(function () {
+      textarea.val(editor.getSession().getValue());
+    })
+
+  });
+
+  $('a.bbcode').click(function (e) {
+    e.preventDefault()
+    var code = $(this).attr('data-editor'), range = editor.getSelectionRange()
+    var selection = editor.session.getTextRange(range),
+        mode, t
+    var bb = ['b','i','u', 's']
+    for(var k in bb)
+    {
+      if(bb[k] == code.toLowerCase())
+      {
+        editor.insert(
+                '[' + code.toUpperCase() + ']' + selection,
+            selection.start
+        )
+        editor.insert('[/' + code.toUpperCase() + ']', range.end)
+        if (!selection) {
+          var selLead = editor.session.getSelection().selectionLead
+          selLead.setPosition(selLead.row, selLead.column - code.length - 3)
+        }
+        else
+          editor.find(selection, range)
+        editor.focus()
+        return
+      }
+    }
+    if(code.toLowerCase() == 'url' || code.toLowerCase() == 'img')
+    {
+      t = prompt('Введите url ' + (code.toLowerCase() == 'img' ? 'к изображению' : ''), 'http://')
+      if(!t)
+        return
+      if(t && !selection)
+        selection = t
+      editor.insert(
+              '[' + code.toUpperCase() + '="' + t + '"]' + selection,
+          selection.start
+      )
+      editor.insert('[/' + code.toUpperCase() + ']', range.end)
+      editor.focus()
+      return
+    }
+    editor.insert(
+            '[' + code.toUpperCase() + ']' + selection,
+        selection.start
+    )
+    editor.insert('[/' + code.toUpperCase() + ']', range.end)
+    if (!selection) {
+      var selLead = editor.session.getSelection().selectionLead
+      selLead.setPosition(selLead.row, selLead.column - code.length - 3)
+    }
+    else
+      editor.find(selection, range)
+
+    editor.focus()
+
+    var text = "", tmp
+    for (var el in supportedModes) {
+      tmp = supportedModes[el].replace('^', '').split('|')
+      for (var t in tmp)
+        if (tmp[t].toLowerCase() == code.toLowerCase())
+          text = el.toLowerCase()
+    }
+
+    mode = text.toLowerCase()
+
+    if (!mode)
+      mode = 'javascript'
+    $(this).attr("data-editor", mode)
+    $(this).attr('data-lang', mode)
+
+    if (text) {
+      if ($("#code_code").length)
+        $("#code_code").attr("data-editor", mode)
+      else
+        $("#private_message_text").attr("data-editor")
+
+      editor.getSession().setMode('ace/mode/' + mode)
+    }
+  })
+})

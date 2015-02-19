@@ -1,0 +1,46 @@
+<%= simple_form_for @code do |f| %>
+  <% if @code.errors.any? %>
+    <div id="error_explanation">
+      <h2>Пожалуйста, исправьте следующие ошибки (<%= @code.errors.count %>):</h2>
+
+      <ul>
+        <% @code.errors.full_messages.each do |msg| %>
+          <li><%= msg.sub('Code', '') %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label t(:title) %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= render 'bbcode' %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :code, required: true, rows: 15, style: 'width: 700px' %>
+  </div>
+
+  <% if false %>
+    <%= f.fields_for :attachments do |p| %>
+      <div class="field">
+        <%= p.label :image %><br>
+        <%= p.file_field :image, multiple: true, name: 'attachments[image][]' %>
+      </div>
+    <% end %>
+    <% if params[:controller] == 'codes' && params[:action] == 'edit' %>
+      <% @code.attachments.each do |code| %>
+        <%= link_to "#{code.image}", rel: 'prettyPhoto[gallery]' do %>
+          <%= image_tag code.image, class: 'attach' %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit t(@code.new_record? ? 'Insert' : 'Update') %>
+  </div>
+<% end %>

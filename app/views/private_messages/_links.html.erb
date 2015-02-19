@@ -1,0 +1,17 @@
+<div class="span7">
+  <%= t 'Go to' %> <%= link_to t('inbox'), create_url('pm', 'inbox'), class: 'link' %>
+  |
+  <%= link_to t('outbox'), create_url('pm', 'outbox'), class: 'link' %>
+  <br>
+  <%= locale == :ru ? 'Или' : 'Or' %>
+  <%= link_to t('New Private message'), create_url(new_private_message_path), class: 'link' %>
+</div>
+<div style="clear:both"></div>
+<hr style="margin:0;margin-top:15px;">
+<% if ['inbox', 'outbox'].include? action_name %>
+    <div class="span7">
+      <h3><%= t action_name %></h3>
+    </div>
+    <div style="clear:both"></div>
+    <hr style="margin:0;margin-bottom:30px">
+<% end %>

@@ -1,0 +1,30 @@
+<div class="post">
+	<h2>Список пользователей</h2>
+
+	<% if @users.empty? %>
+		В настоящее время ни одного пользователя не зарегистрировано..
+	<% else %>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Логин</th>
+					<th>Регистрация</th>
+					<th>Сообщений</th>
+					<th>Последний визит</th>
+					<th>Аватар</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each do |user| %>
+					<tr>
+						<td><%= user_status_image user %> <b><%= link_to user.username, create_url('user', user.id) %></b></td>
+						<td><%= user.created_at.to_formatted_s :ru_datetime %></td>
+						<td><%= Code.where(user_id: user.id).count %></td>
+						<td><%= user.last_sign_in_at.to_formatted_s :ru_datetime %></td>
+						<td style="text-align:center"><%= user.profile.avatar? ? image_tag(user.profile.avatar_url, class: 'photo-icon') : ' - ' %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
+</div>

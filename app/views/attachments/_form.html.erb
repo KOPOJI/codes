@@ -1,0 +1,29 @@
+<%= simple_form_for(@attachment) do |f| %>
+    <% if @attachment.errors.any? %>
+        <div id="error_explanation">
+          <% if locale == :ru %>
+              <h2>Пожалуйста, исправьте следующие ошибки (<%= @attachment.errors.count %>):</h2>
+          <% else %>
+              <h2><%= pluralize(@attachment.errors.count, 'error') %> prohibited
+                this code from being saved:</h2>
+          <% end %>
+
+          <ul>
+            <% @attachment.errors.full_messages.each do |msg| %>
+                <li><%= msg.sub('Image', '') %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-inputs">
+      <%= f.label :code_id, t('Code') %>
+      <%= f.collection_select :code_id, Code.order(:title), :id, :title, include_blank: true %>
+      <%= f.label :image, t(:image) %>
+      <%= f.input_field :image %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, t(@attachment.new_record? ? 'Upload' : 'Update') %>
+    </div>
+<% end %>

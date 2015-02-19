@@ -1,0 +1,45 @@
+module CodesHelper
+  #require 'coderay'
+  #require 'pygmentize'
+
+  require 'rouge/plugins/redcarpet'
+
+  def parse_bb_codes text
+
+    text = CGI.escapeHTML text
+    text.gsub! /\[b\](.*?)\[\/b\]/i, '<span class="bold">\\1</span>'
+    text.gsub! /\[i\](.*?)\[\/i\]/i, '<span class="cursive">\\1</span>'
+    text.gsub! /\[u\](.*?)\[\/u\]/i, '<span class="underline">\\1</span>'
+    text.gsub! /\[s\](.*?)\[\/s\]/i, '<span class="del">\\1</span>'
+    text.gsub!(/\[img\](https?:\/\/[^<>]+?)\[\/img\]/i, '<a href="\\1" rel="prettyPhoto"><img src="\\1" class="attach"></a>')
+
+    text.scan(/\[url=&quot;(.+?)&quot;\](.*?)\[\/url\]/ium).each do |url|
+      if url[0] =~ /^#{URI::regexp(%w(http https))}$/
+        text.sub! /\[url=&quot;(.+?)&quot;\](.*?)\[\/url\]/ium, link_to('\\2', '\\1', class: 'link', target: '_blank')
+      end
+    end
+
+    text.scan(/\[(#{File.readlines("#{Rails.root}/app/languages.txt").join('|').gsub /\s+/, ''})\](.*?)\[\/\1\]/ium).each do |match|
+
+      html = Rouge::Formatters::HTML.new(line_numbers: true, inline_theme: nil)
+      text.sub! /\[#{Regexp.escape match[0]}\]#{Regexp.escape match[1]}\[\/#{Regexp.escape match[0]}\]/i, lang_title(match[0]) + Rouge.highlight(CGI.unescapeHTML(escape_backslash match[1]), match[0].downcase || 'text', html).gsub(/\n/, '')
+
+    end
+
+    text.gsub! '<br>', ''
+    text.gsub '&lt;br&gt;', ''
+  end
+
+  def nl2br text
+    text.gsub /\n/, '<br>'
+  end
+
+  def escape_backslash str
+    Regexp.escape(str).gsub /(?<!\\)\\(?=[-.?(){} nr])/, ''
+  end
+
+  private
+  def lang_title code
+    "<div class='lang'>#{t('Code')} #{code}</div>"
+  end
+end

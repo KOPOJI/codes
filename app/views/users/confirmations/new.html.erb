@@ -1,0 +1,14 @@
+<%= render '/users/form', start: true, header: t('Resend confirmation instructions') %>
+
+<%= simple_form_for resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post} do |f| %>
+    <%= devise_error_messages! %>
+
+    <div>
+      <%= f.label :email, t(:email) %>
+      <%= f.email_field :email, autofocus: true, class: 'form-input' %>
+    </div>
+
+    <div><%= f.submit t('Resend confirmation instructions'), class: 'button' %></div>
+<% end %>
+
+<%= render '/users/form', start: false %>

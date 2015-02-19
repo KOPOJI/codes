@@ -1,0 +1,76 @@
+div.bbcodes {
+  max-width: 820px;
+  margin: 3px;
+  a.bbcode {
+    display: inline-block;
+    border: 1px solid #fff;
+    font-size: 11px;
+    padding: 1px;
+    &:hover {
+      background-color: rgb(152, 181, 226);
+      border: 1px solid rgb(49, 106, 197);
+      text-decoration: none;
+    }
+  }
+  a.del:hover {
+    text-decoration: line-through;
+  }
+  a.underline:hover {
+    text-decoration: underline;
+  }
+  a.html {
+    font-size: 14px;
+  }
+}
+
+.lang {
+  font-family: sans-serif;
+  color: #606060;
+  font-size: 13px;
+  font-weight: bold;
+  //padding: 2px;
+  width: 700px;
+}
+
+.cursive {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.del {
+  text-decoration: line-through;
+}
+
+.nav-list {
+  padding: 2px;
+  .nav-header {
+    text-align: center;
+    margin-left: -30px;
+    margin-right: -30px;
+    font-size: 11px;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif
+  }
+}
+
+.attach {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.attach_item {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 15px;
+  display: inline-block;
+}
+
+.navbar .nav > li > a {
+  font-size: 14px;
+}

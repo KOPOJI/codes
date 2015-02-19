@@ -1,0 +1,14 @@
+.attach_item {
+  font-size: 11px;
+  a:first-child {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    &:hover {
+      background-color: #FFF;
+    }
+    img {
+      display: inline-block;
+    }
+  }
+}

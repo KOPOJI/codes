@@ -1,0 +1,26 @@
+<% if @attachments.present? %>
+    <h1><%= t 'Listing pictures' %></h1>
+
+    <div class="attachchments">
+      <% @attachments.each do |attachment| %>
+          <div class="attach_item">
+
+            <% if attachment.code.present? %>
+                <% url = attachment.code.code_url.blank? ? attachment.code.id : attachment.code.code_url %>
+                <%= link_to t('View code'), create_url('codes', url), class: 'link' %>
+            <% end %>
+
+            <%= link_to "#{attachment.image}", rel: 'prettyPhoto[gallery]' do %>
+                <%= image_tag attachment.image, class: 'attach' %>
+            <% end %>
+
+            <%= link_to t('Edit'), edit_attachment_path(attachment), class: 'link' %>
+            <%= link_to t('Destroy'), attachment, method: :delete, data: {confirm: t('Are you sure?')}, class: 'link' %>
+
+          </div>
+      <% end %>
+    </div>
+<% else %>
+    <%= t 'no_pictures' %>
+<% end %>
+<%#= link_to t('New attachment'), new_attachment_path %>

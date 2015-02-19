@@ -1,0 +1,22 @@
+<% if @attachment.code_id.present? %>
+    <p>
+      <strong><%= t 'Code' %>:</strong>
+      <% url = @attachment.code.code_url.empty? ? @attachment.code.id : @attachment.code.code_url;
+         title = @attachment.code.title.empty? ? "#{t 'Code'} ##{@attachment.code.id}" : @attachment.code.title
+         title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}"
+      %>
+      <%= link_to truncate(title, length:35), create_url('codes', url), class: 'link' %>
+    </p>
+<% end %>
+<p>
+  <strong><%= t 'image' %>:</strong>
+  <%= link_to @attachment.image.to_s.gsub(/.*?\/([^\/]+?)$/, '\\1'), "#{@attachment.image}", class: 'link', target: '_blank' %>
+<br>
+<br>
+  <%= link_to "#{@attachment.image}", rel: 'prettyPhoto' do %>
+      <%= image_tag @attachment.image, class: 'attach' %>
+  <% end %>
+</p>
+
+<%= link_to t('Edit'), edit_attachment_path(@attachment), class: 'link' %> |
+<%= link_to t('Back'), attachments_path, class: 'link' %>
