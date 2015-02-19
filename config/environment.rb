@@ -8,4 +8,4 @@ ActionMailer::Base.delivery_method = :smtp
 Time::DATE_FORMATS[:ru_datetime] = "%d.%m.%Y в %k:%M:%S"
 
 # Initialize the Rails application.
-Codes::Application.initialize!
+Rails.application.initialize!
