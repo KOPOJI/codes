@@ -7,6 +7,7 @@ Codes::Application.routes.draw do
   get '/pm/:type/:id', to: 'private_messages#show', constraints: {type: /(?:out|in)box/i }
   resources :private_messages, path: 'pm'
 
+  get '/codes/find_by_user/:user_id', to: 'codes#find_all_by_user_id', constraints: { user_id:/\d+/ }
   get '/codes/:path/:file' => redirect('/codes/%{file}'), constraints: { path: /[a-z0-9]+/i, file: /.*\.(?:cs|j)s/i }
   get 'users', to: 'users#index'
   get 'user/:id', to: 'users#show', constraints: {id:/\d+/}

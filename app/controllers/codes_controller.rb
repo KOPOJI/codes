@@ -21,6 +21,13 @@ class CodesController < ApplicationController
 
   end
 
+  def find_all_by_user_id
+    begin
+      @user = User.find(params[:user_id])
+    rescue
+    end
+    render 'codes/codes_by_user'
+  end
   def new
     @code = Code.new
     @attachments = @code.attachments.build

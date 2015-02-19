@@ -1,0 +1,22 @@
+<div class="post">
+  <% if @user.nil? %>
+      Пользователь с таким id (<%= params[:user_id] %>) не найден.
+  <% else %>
+      <% if @user.codes.count.zero? %>
+          <b><%= link_to @user.username, create_url('user', @user.id) %></b> не оставлял(а) сообщений
+      <% else %>
+          Found <%= pluralize @user.codes.count, 'message' %> by <b><%= link_to @user.username, create_url('user', @user.id) %></b>:
+          <br>
+          <br>
+          <% @user.codes.each do |code| %>
+              <% next if code.show_from.present? and !can_edit?(code, true) and !visible?(code) %>
+              <% url = code.code_url.empty? ? code.id : code.code_url;
+                 title = code.title.empty? ? "#{t 'Code'} ##{code.id}" : code.title
+                 title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}"
+              %>
+              <%= link_to sanitize(code.title), create_url('codes', url) %>
+              <br>
+          <% end %>
+      <% end %>
+  <% end %>
+</div>

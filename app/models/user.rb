@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :messages
   has_many :private_messages
+  has_many :codes
 
   after_create :create_profile
   
