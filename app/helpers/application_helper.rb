@@ -1,3 +1,4 @@
+require 'pascal'
 module ApplicationHelper
 
   def app_name

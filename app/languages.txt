@@ -39,6 +39,7 @@ Nginx => NginxConf
 Nim => Nim
 ocaml|ml|mli => Ocaml
 objective_c|objectivec|m|mm => Objective-C
+pascal => Pascal
 php|phtml => PHP
 perl|pl|pm => Perl
 prolog|plg => Prolog
