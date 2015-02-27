@@ -5,13 +5,13 @@
       <% is_root = true %>
       <% @codes.each do |code| %>
         <% next if code.show_from.present? and !can_edit?(code, true) and !visible?(code) %>
-        <% url = code.code_url.empty? ? code.id : code.code_url;
+        <% #url = code.code_url.empty? ? code.id : code.code_url;
            title = code.title.empty? ? "#{t 'Code'} ##{code.id}" : code.title
            title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}"
         %>
           <% is_root &&= request.fullpath == '/' %>
         <li<%= ' class=current' if current_code?(url) or is_root %>>
-          <%= link_to truncate(sanitize(title), length:21), create_url('codes', url) %>
+          <%= link_to truncate(sanitize(title), length:21), create_url('codes', code.id) %>
         </li>
           <% is_root &&= false %>
       <% end %>
