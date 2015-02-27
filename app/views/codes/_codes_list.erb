@@ -8,10 +8,11 @@
         <% #url = code.code_url.empty? ? code.id : code.code_url;
            title = code.title.empty? ? "#{t 'Code'} ##{code.id}" : code.title
            title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}"
+           url = code.id
         %>
           <% is_root &&= request.fullpath == '/' %>
         <li<%= ' class=current' if current_code?(url) or is_root %>>
-          <%= link_to truncate(sanitize(title), length:21), create_url('codes', code.id) %>
+          <%= link_to truncate(sanitize(title), length:21), create_url('codes', url) %>
         </li>
           <% is_root &&= false %>
       <% end %>
