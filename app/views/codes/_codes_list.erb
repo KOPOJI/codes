@@ -8,7 +8,7 @@
         <% #url = code.code_url.empty? ? code.id : code.code_url;
            title = code.title.empty? ? "#{t 'Code'} ##{code.id}" : code.title
            title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}"
-           url = code.id
+           url = "#{code.id}"
         %>
           <% is_root &&= request.fullpath == '/' %>
         <li<%= ' class=current' if current_code?(url) or is_root %>>
