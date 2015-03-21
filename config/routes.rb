@@ -11,6 +11,7 @@ Codes::Application.routes.draw do
   get '/codes/:path/:file' => redirect('/codes/%{file}'), constraints: { path: /[a-z0-9]+/i, file: /.*\.(?:cs|j)s/i }
   get 'users', to: 'users#index'
   get 'user/:id', to: 'users#show', constraints: {id:/\d+/}
+  delete '/codes/delete/:id', to: 'codes#destroy'
   match 'user/profile', to: 'users#profile', as: 'profile', via: [:get, :patch]
   
   devise_for :users, path: 'user', path_names: {

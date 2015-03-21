@@ -21,8 +21,8 @@ module CodesHelper
     code_regexp = code_list.values.join('|').gsub(/\s+/u, '')
 
     text.scan(/\[(#{code_regexp})\](.*?)\[\/\1\]/ium).each do |match|
-
-      lexer = Rouge::Lexer.find(match[0].downcase) ? match[0].downcase : 'text'
+	  lexer = match[0].downcase == 'c_cpp' ? 'cpp' : match[0].downcase
+      lexer = Rouge::Lexer.find(lexer) ? lexer : 'text'
       title = match[0]
       code_list.each{ |k, v| title = k if /\A(?:#{v})\z/ui =~ match[0] }
       text.sub! /\[#{Regexp.escape match[0]}\]#{Regexp.escape match[1]}\[\/#{Regexp.escape match[0]}\]/i,

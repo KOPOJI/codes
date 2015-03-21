@@ -81,9 +81,12 @@ class CodesController < ApplicationController
   end
 
   def destroy
+
+    raise CanCan::AccessDenied unless user_signed_in? and (current_user.admin? or current_user.id == @code.user_id)
+
     @code.destroy
     respond_to do |format|
-      format.html { redirect_to codes_url }
+      format.html { redirect_to codes_url, notice: I18n.t('Code was successfully deleted') }
       format.json { head :no_content }
     end
   end

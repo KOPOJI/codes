@@ -5,3 +5,7 @@
 <%= render 'form' %>
 
 <%= link_to t('Show'), create_url('codes', @code.code_url.empty? ? @code.id : @code.code_url), class: 'link' %>
+
+<% if user_signed_in? and (current_user.admin? or current_user.id == @code.user_id) %>
+    <%= link_to t('Destroy'), create_url('codes', 'delete', @code.id), data: {method: 'delete', confirm: t('Are you sure?')}, class: 'link' %>
+<% end %>

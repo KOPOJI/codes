@@ -1,6 +1,6 @@
 apache_conf|htaccess|htgroups|htpasswd|htaccess|htgroups|htpasswd => ApacheConf
 AppleScript => AppleScript
-c_cpp|cpp|c|cc|cxx|h|hh|hpp => C/C++
+cpp|c|c_cpp|cc|cxx|h|hh|hpp => C/C++
 css => CSS
 csharp|cs => C#
 clojure|clj|cljs => Clojure
