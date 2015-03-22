@@ -80,6 +80,11 @@ class CodesController < ApplicationController
     end
   end
 
+  def delete_links
+    show_delete_link
+    redirect_to root_path
+  end
+
   def destroy
 
     raise CanCan::AccessDenied unless user_signed_in? and (current_user.admin? or current_user.id == @code.user_id)

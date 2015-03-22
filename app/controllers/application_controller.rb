@@ -33,6 +33,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def show_delete_link
+   if session[:show_delete_link].nil?
+     session[:show_delete_link] = false
+   else
+     session[:show_delete_link] = !session[:show_delete_link]
+   end
+  end
+
   def get_codes
     #@codes = Code.order(id: :desc).where(status: true).paginate(page: params[:page],per_page: 15)
     unless user_signed_in?

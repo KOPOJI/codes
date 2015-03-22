@@ -41,6 +41,10 @@ module ApplicationHelper
     session[:show_chat].present?
   end
 
+  def show_delete_links?
+    user_signed_in? && current_user.admin? && session[:show_delete_link].present? && session[:show_delete_link]
+  end
+
   def quote
     {
         'Quote' => [

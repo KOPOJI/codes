@@ -46,6 +46,6 @@
     Just for fun. Just for save.
   </div>
 </footer>
-<%= render 'layouts/metrika' %>
+<%= render 'layouts/metrika' if Rails.env.production? %>
 </body>
 </html>

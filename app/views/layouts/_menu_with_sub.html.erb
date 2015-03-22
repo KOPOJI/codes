@@ -61,6 +61,11 @@
             </ul>
           </li>
 
+      <% if user_signed_in? && current_user.admin? %>
+        <li>
+          <%= link_to 'Show Delete(X)', create_url('codes', 'show_delete_links') %>
+        </li>
+      <% end %>
         </ul>
       </div>
     </div>
