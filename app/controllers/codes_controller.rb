@@ -21,6 +21,21 @@ class CodesController < ApplicationController
 
   end
 
+  def delete_interval
+    raise CanCan::AccessDenied unless user_signed_in? || current_user.admin?
+    @deleted = nil
+    if request.get?
+      render 'delete_interval'
+    else
+      if request.post?
+        @deleted = Code.delete_all(['id BETWEEN ? AND ?', params[:id_1], params[:id_2]])
+      else
+        raise CanCan::AccessDenied
+      end
+    end
+  end
+
+
   def find_all_by_user_id
     begin
       @user = User.find(params[:user_id])

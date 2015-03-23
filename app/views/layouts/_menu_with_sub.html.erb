@@ -62,9 +62,12 @@
           </li>
 
       <% if user_signed_in? && current_user.admin? %>
-        <li>
-          <%= link_to 'Show Delete(X)', create_url('codes', 'show_delete_links') %>
-        </li>
+          <li>
+            <%= link_to ' X ', create_url('codes', 'show_delete_links'), style: 'color:red' %>
+          </li>
+          <li>
+            <%= link_to ' X ([a;b]) ', create_url('codes', 'delete_interval'), style: 'color:red' %>
+          </li>
       <% end %>
         </ul>
       </div>

@@ -12,8 +12,8 @@
         %>
           <% is_root &&= request.fullpath == '/' %>
         <li<%= ' class=current' if current_code?(url) or is_root %>>
-          <%= link_to truncate(sanitize(title), length:20), create_url('codes', url) %>
-          <%= link_to 'X', create_url('codes', 'delete', code.id), method: :delete if show_delete_links? %>
+          <%= link_to truncate(sanitize(title), length: 20), create_url('codes', url) %>
+          <%= link_to 'X', create_url('codes', 'delete', code.id), method: :delete, style: 'color:red;display:inline' if show_delete_links? %>
         </li>
           <% is_root &&= false %>
       <% end %>

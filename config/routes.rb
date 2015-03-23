@@ -2,6 +2,8 @@ Codes::Application.routes.draw do
 
   root 'codes#index'
 
+  match '/codes/delete_interval', to: 'codes#delete_interval', via: [:get, :post]
+
   get '/pm' => redirect('/pm/inbox.html')
   get '/pm/:action', to: 'private_messages#:action', constraints: {action: /(?:out|in)box/i }
   get '/pm/:type/:id', to: 'private_messages#show', constraints: {type: /(?:out|in)box/i }

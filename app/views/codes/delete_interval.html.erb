@@ -1,0 +1,7 @@
+<%= form_tag do %>
+  <input type="number" name="id_1" placeholder="id 1">
+  <input type="number" name="id_2" placeholder="id 2">
+  <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+<% end %>
+
+<%= "Deleted #{@deleted} records" if @deleted.present? %>
