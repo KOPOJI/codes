@@ -1,4 +1,5 @@
 en:
+  Illegal characters: 'Used illegal characters.'
   code_status: 'Visible'
   try: 'Try'
   try_code: 'insert code'

@@ -57,6 +57,14 @@ class CodesController < ApplicationController
 
     @code.user_id = current_user.id if user_signed_in?
 
+    #my little anti-spam-hack =)
+    unless user_signed_in?
+      if (@code.title.blank? or @code.title =~ /\A\s*[a-z_-]+?\s*\z/i) and @code.code =~ /\A\s*[^\[\n\r]+?<a\s*href\s*=\s*["']/i
+        @code.errors[:base] << I18n.t('Illegal characters')
+        render :new and return
+      end
+    end
+
     respond_to do |format|
       if @code.save
         if params[:attachments].present?

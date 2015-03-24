@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def current_code? url
-    request.fullpath.include? url
+    request.fullpath.include? "#{url}.html"
   end
 
   def show_chat?

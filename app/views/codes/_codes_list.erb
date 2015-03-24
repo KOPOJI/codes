@@ -2,7 +2,6 @@
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
       <li class="nav-header"><%= "#{t('Listing codes')} (#{@codes.count})" %></li>
-      <% is_root = true %>
       <% @codes.each do |code| %>
         <% next if code.show_from.present? and !can_edit?(code, true) and !visible?(code) %>
         <% #url = code.code_url.empty? ? code.id : code.code_url;
@@ -10,12 +9,10 @@
            title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}"
            url = "#{code.id}"
         %>
-          <% is_root &&= request.fullpath == '/' %>
-        <li<%= ' class=current' if current_code?(url) or is_root %>>
+        <li<%= ' class=current' if current_code?(url) %>>
           <%= link_to truncate(sanitize(title), length: 20), create_url('codes', url) %>
           <%= link_to 'X', create_url('codes', 'delete', code.id), method: :delete, style: 'color:red;display:inline' if show_delete_links? %>
         </li>
-          <% is_root &&= false %>
       <% end %>
     </ul>
     <div class="apple_pagination">
