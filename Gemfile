@@ -38,7 +38,7 @@ gem 'simple_form'
 #users
 gem 'devise'
 gem 'cancan'
-
+gem 'simple_captcha2', require: 'simple_captcha'
 # Use mysql as the database for Active Record
 group :development do
   gem 'mysql2'

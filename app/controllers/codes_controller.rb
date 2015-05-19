@@ -59,6 +59,10 @@ class CodesController < ApplicationController
 
     #my little anti-spam-hack =)
     unless user_signed_in?
+      unless simple_captcha_valid?
+        @code.errors[:base] << I18n.t('simple_captcha.message.default')
+        render :new and return
+      end
       if (@code.title.blank? or @code.title =~ /\A\s*[\da-z_-]+?\s*\z/i) and @code.code =~ /\A\s*[^\[\n\r]+?<a\s*href\s*=\s*["']/i
         @code.errors[:base] << I18n.t('Illegal characters')
         render :new and return

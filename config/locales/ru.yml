@@ -1,4 +1,13 @@
 ru:
+
+  simple_captcha:
+    placeholder: 'Введите код'
+    label: 'Введите код с картинки'
+    refresh_button_text: 'Обновить код'
+    message:
+      default: 'Неправильный проверочный код'
+      user: 'Картинка и код различаются'
+
   Illegal characters: 'В тексте сообщения используются запрещенные символы.'
   code_status: 'Видим для всех'
   try: 'Попробуйте сами'

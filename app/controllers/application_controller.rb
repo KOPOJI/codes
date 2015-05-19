@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   require 'will_paginate/array'
 
+  include SimpleCaptcha::ControllerHelpers
+
   before_action :set_language, :get_codes
   before_action :configure_permitted_parameters, if: :devise_controller?
   

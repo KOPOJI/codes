@@ -1,4 +1,13 @@
 en:
+
+  simple_captcha:
+    placeholder: 'Enter code'
+    label: 'Enter code'
+    refresh_button_text: 'Refresh'
+    message:
+      default: 'Secret Code did not match with the Image'
+      user: 'The secret Image and code were different'
+
   Illegal characters: 'Used illegal characters.'
   code_status: 'Visible'
   try: 'Try'
