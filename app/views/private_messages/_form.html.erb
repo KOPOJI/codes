@@ -1,4 +1,4 @@
-<% @message = user_to_id.present? || @private_message.text.blank? ? PrivateMessage.new : @private_message; %>
+<% @message = !user_to_id.present? || @private_message.nil? ? PrivateMessage.new : @private_message; %>
 
 <%= render 'private_messages/links' %>
 
@@ -29,16 +29,16 @@
           <%= f.collection_select :user_to_id, User.where.not(id: current_user.id).order(:username), :id, :username, include_blank: true %>
       <% end %>
       <%= f.label :title, t(:message_title) %>
-      <%= f.text_field :title, style: 'width: 600px', autofocus: true, value: (to_message_id.present? && !@private_message.title.starts_with?('Re: ') ? 'Re: ' + @private_message.title : @private_message.title) %>
+      <%= f.text_field :title, style: 'width: 600px', autofocus: true, value: (to_message_id.present? && @message.title && !@message.title.starts_with?('Re: ') ? 'Re: ' + @message.title : @message.title) %>
 
-      <% if @private_message.text.present? %>
+      <% if @message.text.present? %>
           <div style="padding: 5px;margin:14px">
-          <%= (parse_bb_codes(@private_message.text).html_safe.bbcode_to_html(quote, false).gsub(/(?<=<strong>)&quot;(.*?)&quot;/uim, '\\1')).html_safe %>
+			<%#= (parse_bb_codes(@message.text).html_safe.bbcode_to_html(quote, false).gsub(/(?<=<strong>)&quot;(.*?)&quot;/uim, '\\1')).html_safe %>
           </div>
           <div class="field">
             <%#= render 'codes/bbcode' %>
           </div>
-          <%= f.text_area :text, style: 'width: 800px;height:300px', value: "[QUOTE=\"#{@private_message.user_from.username}\"]#{@private_message.text}[/QUOTE]\n" %>
+          <%= f.text_area :text, style: 'width: 800px;height:300px', value: "[QUOTE=\"#{@message.user_from.username}\"]#{@message.text}[/QUOTE]\n", 'data-editor' => 'javascript' %>
       <% else %>
           <div class="field">
             <%#= render 'codes/bbcode' %>

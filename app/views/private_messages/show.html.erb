@@ -12,4 +12,4 @@
   <br><br>
   <%= link_to t('Back'), create_url(private_messages_path, request.fullpath.include?('outbox') ? 'outbox' : 'inbox'), class: 'link' %>
 </div>
-<%= javascript_tag render('codes/code.html.js.erb') %>
+<%= render 'codes/bbcode' %>
