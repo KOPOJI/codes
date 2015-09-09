@@ -12,4 +12,3 @@
   <br><br>
   <%= link_to t('Back'), create_url(private_messages_path, request.fullpath.include?('outbox') ? 'outbox' : 'inbox'), class: 'link' %>
 </div>
-<%= render 'codes/bbcode' %>

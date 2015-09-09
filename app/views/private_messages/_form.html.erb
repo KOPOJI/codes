@@ -31,6 +31,7 @@
       <%= f.label :title, t(:message_title) %>
       <%= f.text_field :title, style: 'width: 600px', autofocus: true, value: (to_message_id.present? && @message.title && !@message.title.starts_with?('Re: ') ? 'Re: ' + @message.title : @message.title) %>
 
+		<%= render 'codes/bbcode' %>
       <% if @message.text.present? %>
           <div style="padding: 5px;margin:14px">
 			<%#= (parse_bb_codes(@message.text).html_safe.bbcode_to_html(quote, false).gsub(/(?<=<strong>)&quot;(.*?)&quot;/uim, '\\1')).html_safe %>
