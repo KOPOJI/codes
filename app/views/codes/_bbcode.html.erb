@@ -7,7 +7,7 @@
     <%= link_to 'IMG', '#', class: 'bbcode html', "data-editor" => 'img' %>
     <%= link_to 'URL', '#', class: 'bbcode html', "data-editor" => 'url' %>
   </div>
-  <% codes.each do |title, code| %>
+  <% codes_titles.each do |title, code| %>
       <%= link_to title, '#', class: 'bbcode', 'data-editor' => code.split('|').first %>
   <% end %>
 </div>

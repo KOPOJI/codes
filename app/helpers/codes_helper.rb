@@ -32,12 +32,18 @@ module CodesHelper
     text.gsub '<br>', ''
   end
 
-  def codes
-    code = File.readlines("#{Rails.root}/app/languages.txt")
-    code_list = {}
-    code.each{|line| tmp = line.strip.split(' => '); code_list[tmp.last] = tmp.first }
-    code_list
-  end
+    def codes
+      code = File.readlines("#{Rails.root}/app/languages.txt")
+      code_list = {}
+      code.each{|line| tmp = line.strip.split(' => '); code_list[tmp.last] = tmp.first }
+      code_list
+    end
+    def codes_titles
+      code = File.readlines("#{Rails.root}/app/languages_titles.txt")
+      code_list = {}
+      code.each{|line| tmp = line.strip.split(': '); code_list[tmp.last] = tmp.first }
+      code_list
+    end
   def visible? code
     referer = request.env['HTTP_REFERER']
     code.present? && (user_signed_in? && !current_user.admin? && current_user.id != code.user_id) || !(referer.nil? || (referer.present? && !referer.include?(code.show_from)))
