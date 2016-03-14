@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
-gem 'rails', '4.2.0'
+ruby '2.3.0'
+gem 'rails', '4.2.4'
 
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
@@ -41,7 +41,7 @@ gem 'cancan'
 gem 'simple_captcha2', require: 'simple_captcha'
 # Use mysql as the database for Active Record
 group :development do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.18'
   gem 'web-console', '~> 2.0'
 end
 

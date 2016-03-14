@@ -18,9 +18,9 @@
 				<% @users.each do |user| %>
 					<tr>
 						<td><%= user_status_image user %> <b><%= link_to user.username, create_url('user', user.id) %></b></td>
-						<td><%= user.created_at.to_formatted_s :ru_datetime %></td>
+						<td><%= user.created_at.nil? ? '-' : user.created_at.to_formatted_s :ru_datetime %></td>
 						<td><%= link_to Code.where(user_id: user.id).count, create_url('codes', 'find_by_user', user.id), class: 'link' %></td>
-						<td><%= user.last_sign_in_at.to_formatted_s :ru_datetime %></td>
+						<td><%= user.last_sign_in_at.nil? ? '-' : user.last_sign_in_at.to_formatted_s :ru_datetime %></td>
 						<td style="text-align:center"><%= user.profile.avatar? ? image_tag(user.profile.avatar_url, class: 'photo-icon') : ' - ' %></td>
 					</tr>
 				<% end %>
