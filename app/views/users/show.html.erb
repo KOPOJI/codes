@@ -2,7 +2,7 @@
 <div id="profilePage">
   <div id="leftCol">
     <div id="photo">
-      <%= image_tag(@user.profile.avatar_url) if @user.profile.avatar? %>
+      <%= image_tag(@user.profile.avatar_url) if @user.profile.present? && @user.profile.avatar? %>
       <% if current_user?(@user) %>
         <%= simple_form_for @user.profile, html: {multipart: true} do |f| %>
           <%= f.file_field :avatar %>
