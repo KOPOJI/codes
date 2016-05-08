@@ -8,7 +8,7 @@ Codes::Application.routes.draw do
     return "#{req.path}/?page=#{req.query_parameters[:page]}" if (req.path =~ /^\/?(?:#{locales})$/i) && req.query_parameters[:page].present?
     req.query_parameters[:page].present? ? "#{req.path}.html?page=#{req.query_parameters[:page]}" : "#{req.path}.html"
   }, constraints: lambda {
-      |req| !(req.path =~ /^\/?(?:#{locales})\/?$/i) && !req.path.ends_with?('.html')
+      |req| !(req.path =~ /^\/?(?:#{locales})\/?$/i) && !(req.path =~ /\.(?:html|s?css|js|jpe?g|png|gif)/i)
   }, status: 301
 
   scope '(:locale)', locale: /#{locales}/i do
