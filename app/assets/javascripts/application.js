@@ -11,10 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
-//= require prettyphoto-rails-dev
 //= require jquery_ujs
-//= require turbolinks
 //= require ace/ace
 //= require bootstrap-sprockets
 //= require_tree .

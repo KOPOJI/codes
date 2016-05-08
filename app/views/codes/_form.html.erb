@@ -25,8 +25,8 @@
     <%= render 'bbcode' %>
   </div>
 
-  <div class="field" style="margin-bottom: -300px">
-    <%= f.text_area :code, required: true, rows: 15, style: 'width: 700px', 'data-editor' => 'javascript', class: 'form-input' %>
+  <div class="field">
+    <%= f.text_area :code, required: true, rows: 15, 'data-editor' => 'javascript', class: 'form-input col-xs-12 col-sm-10 col-md-10 col-lg-10' %>
   </div>
 
   <% if params[:controller] == 'codes' && params[:action] == 'edit' %>

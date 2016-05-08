@@ -4,24 +4,24 @@ ruby '2.3.0'
 gem 'rails', '4.2.4'
 
 gem 'bootstrap-sass'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 
-gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
+gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
 
-gem 'coffee-rails', '~> 4.1.0' # Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails' # Use CoffeeScript for .js.coffee assets and views
 gem 'jquery-rails' # Use jquery as the JavaScript library
 
-gem 'turbolinks'
-gem 'jquery-turbolinks'
+#gem 'turbolinks'
+#gem 'jquery-turbolinks'
 
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 
-gem 'prettyphoto-rails'
+#gem 'prettyphoto-rails'
 
 #syntax highlighter
 gem 'ace-rails-ap'
-gem 'rouge'
-gem 'redcarpet'
+#gem 'rouge'
+#gem 'redcarpet'
 
 gem 'carrierwave'
 
@@ -35,6 +35,10 @@ gem 'seed_dump'
 
 gem 'simple_form'
 
+gem 'themes_on_rails'
+
+gem 'fancybox2-rails', '~> 0.2.8'
+
 #users
 gem 'devise'
 gem 'cancan'
@@ -42,7 +46,7 @@ gem 'simple_captcha2', require: 'simple_captcha'
 # Use mysql as the database for Active Record
 group :development do
   gem 'mysql2', '~> 0.3.18'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 end
 
 group :production do

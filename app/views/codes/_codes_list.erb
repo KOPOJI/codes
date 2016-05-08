@@ -1,4 +1,4 @@
-<div class="col-md-2" style="width: 250px;display: inline-block">
+<div class="col-md-2 nav-menu">
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
       <li class="nav-header"><%= "#{t('Listing codes')} (#{@codes.count})" %></li>
@@ -16,7 +16,7 @@
       <% end %>
     </ul>
     <div class="apple_pagination">
-      <%= will_paginate @codes, container: false, inner_window: 1, outer_window: 0 %>
+      <%= will_paginate @codes, container: false, inner_window: 1, outer_window: 0   %>
     </div>
   </div>
 </div>

@@ -1,0 +1,226 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+html { height: 100%; }
+body, body > .container-fluid { min-height: 100%; }
+
+.col-md-2.nav-menu{
+  max-width: 250px;
+  height: 100%;
+}
+.post {
+  margin-top: 25px;
+  margin-left: 10px;
+}
+.content .post {
+  margin-top: 0;
+  margin-left: 0;
+}
+.navbar-inner {
+  height: auto;
+  background: #3993ba;
+  color: #fff;
+}
+.navbar-inner .container, .navbar-inner .container-fluid {
+  color: #fff;
+}
+.navbar-inner .container {
+  padding: 15px;
+  font-size: 17px;
+  text-shadow: -1px 1px 7px #000;
+}
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+  background: #206484 !important;
+}
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover,
+.nav-pills > .active > a, .nav-pills > .active > a:hover,
+span.dynatree-active a {
+  background: #48a6d2 !important;
+}
+
+.table thead th {background-color:#ebf2f6 !important}
+.dataTables_wrapper th.sorting_asc,.dataTables_wrapper th.sorting_desc {background-color:#d4e3eb !important}
+.navbar .navbar-brand {
+  color: #fff;
+  text-shadow: -1px 1px 7px rgba(0,0,0,0.5);
+}
+.navbar {
+  min-height: 30px;
+  margin-bottom: 0;
+  border: none;
+}
+.navbar-nav > li > a, .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: #fff;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus, .nav > li > a:hover, .nav > li > a:focus  {
+  background-color: rgba(51, 122, 183, 0.5);
+  border-color: #337ab7;
+}
+.nav li > a.dropdown-toggle:hover {
+  background-color: rgba(51, 122, 183, 0.75);
+}
+.dropdown-menu li {
+  padding: 0 5px;
+}
+.dropdown-menu li a {
+  border-radius: 4px;
+  padding: 3px 20px 3px 8px;
+  position: relative;
+  font-size: 13px;
+}
+.col-md-2.nav-menu {
+  background:#fafafa
+}
+.well {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.nav-list.nav > li > a {
+  padding: 5px 15px;
+}
+.attach {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.sidebar-nav .nav-header {
+  text-shadow: 1px 1px 0 #efefef;
+  background: #e0e0e0;
+  box-shadow: inset 0px 1px 0px 0px #ececec;
+  padding: 10px;
+  margin: 0 -15px;
+  margin-bottom: 10px;
+}
+
+.sidebar-nav .nav-list > li > a {
+  border-radius: 4px;
+  padding: 3px 10px;
+  color: #222;
+  text-decoration: none!important;
+}
+.sidebar-nav .nav-list > li > a:hover {
+  background-color: #eee;
+}
+.nav-list>li.current>a, .nav-list>li.current>a:hover, .nav-list>li.current>a:focus {
+  color: #fff;
+  background-color: #48a6d2;
+}
+.apple_pagination {
+  margin: 15px;
+}
+
+div.bbcodes {
+  max-width: 820px;
+  margin: 3px;
+}
+div.bbcodes a.bbcode {
+  display: inline-block;
+  border: 1px solid #fff;
+  font-size: 11px;
+  padding: 3px;
+  color: #666;
+}
+div.bbcodes a.html {
+  font-size: 14px;
+}
+.bold {
+  font-weight: bold;
+}
+.cursive {
+  font-style: italic;
+}
+.underline {
+  text-decoration: underline;
+}
+.del {
+  text-decoration: line-through;
+}
+div.bbcodes a.bbcode:hover {
+  background-color: #CBDEFD;
+  border: 1px solid #316ac5;
+  text-decoration: none;
+  color: #337ab7;
+}
+
+.editor.ace_editor {
+  font-size: 16px;
+}
+@media screen and (max-width: 500px) {
+  body, .sidebar-nav .nav-list > li > a {
+    font-size: 12px;
+  }
+  .navbar-nav {
+    margin: 0 -15px;
+  }
+  .navbar-nav > li > a, .navbar-nav .open .dropdown-menu > li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    line-height: 12px;
+  }
+  .apple_pagination {
+    margin: 15px 0;
+  }
+  .editor.ace_editor {
+    font-size: 13px;
+  }
+  .post {
+    margin-left: 0;
+  }
+}
+label {
+  cursor: pointer;
+}
+.bs-callout {
+  padding: 10px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+}
+.bs-callout-danger {
+  border-left-color: #ce4844;
+}
+.bs-callout+.bs-callout {
+   margin-top: -5px;
+ }
+#error_explanation {
+  max-width: 850px;
+}
+.field.checkbox {
+  display: inline-block;
+}
+
+.select_code, .unfold_code {
+  margin-right: 15px;
+  float: right;
+}
+#top-link-block.affix-top {
+  position: absolute; /* allows it to "slide" up into view */
+  bottom: -82px;
+  left: 10px;
+}
+#top-link-block {
+  position: fixed;
+  bottom: 60px;
+  right: 2px;
+  z-index: 9999;
+  a {
+    padding: 10px 7px;
+    text-decoration:none;
+  }
+  &:hover a {
+    text-decoration:none;
+    text-shadow: 2px 2px 10px rgba(57, 147, 186, 0.6)
+  }
+}
+.form-input.form-control {
+  width: 250px;
+}
+.content {
+  margin-top: 5px;
+  margin-left: 5px;
+}

@@ -1,0 +1,88 @@
+<% cache "#{request.original_fullpath}_#top_#{user_signed_in?}_#{locale}" do %>
+
+  <div class="navbar navbar-fluid-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+
+        <%= link_to app_name, "/#{locale}/", class: 'navbar-brand' %>
+        <span class="visible-xs-inline clearfix"></span>
+        <div class="container-fluid nav-collapse" role="navigation">
+
+          <ul class="nav navbar-nav" aria-labelledby="dLabel">
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Codes' %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to t('Insert code'), create_url('codes', 'new') %></li>
+                <li>
+                  <%= link_to t('Edit code'), create_url('codes', @code.id, 'edit') unless @code.nil? or @code.id.nil? %>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Pictures' %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to t('Listing pictures'), create_url('attachments') %></li>
+                <li><%= link_to t('Upload picture'), create_url('attachments', 'new') %></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Users' %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to t('Listing users'), create_url('users') %></li>
+
+<% end %>
+                <% if user_signed_in? %>
+                  <li><%= link_to t('Profile'), create_url('user', 'profile') %></li>
+                  <li><%= link_to "#{t('Private Messages')} (#{PrivateMessage.where(user_to_id: current_user.id, read: false).count})", create_url('pm', 'inbox') %></li>
+                  <li><%= link_to t('Log out'), create_url('user', 'logout'), method: :delete %></li>
+                <% else %>
+                  <li><%= link_to t('Sign'), create_url('user', 'login') %></li>
+                  <li><%= link_to t('Sign up'), create_url('user', 'register') %></li>
+                <% end %>
+              </ul>
+            </li>
+
+<% cache "menu_#{locale}_#{request.original_fullpath}" do %>
+
+            <% if false && user_signed_in? %>
+              <li><%= link_to t('Chat'), create_url('show_hide_chat'), class: 'chat' %></li>
+            <% end %>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Language' %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to request.original_fullpath.sub(/^\/(?:#{I18n.available_locales.join('|')})\//, '/ru/'), alt: 'Русский язык', title: 'Русский язык' do %>
+                    <%= image_tag image_path('flag_russian.gif'), alt: 'Русский язык' %> Русский
+          <% end %>
+                </li>
+                <li>
+                  <%= link_to request.original_fullpath.sub(/^\/(?:#{I18n.available_locales.join('|')})\//, '/en/'), alt: 'English', title: 'English' do %>
+                     <%= image_tag image_path('flag_english.gif'), alt: 'English' %> English
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+
+<% end %>
+
+<% cache "#{request.original_fullpath}_#bottom_#{user_signed_in? && current_user.admin?}_#{locale}" do %>
+
+        <% if user_signed_in? && current_user.admin? %>
+            <li>
+              <%= link_to ' X ', create_url('codes', 'show_delete_links'), style: 'color:red' %>
+            </li>
+            <li>
+              <%= link_to ' X ([a;b]) ', create_url('codes', 'delete_interval'), style: 'color:red' %>
+            </li>
+        <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

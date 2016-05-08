@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
 
+  theme :light
+
   protect_from_forgery with: :exception
 
   require 'will_paginate/array'
 
   include SimpleCaptcha::ControllerHelpers
+
+  include ApplicationHelper
 
   before_action :set_language, :get_codes
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -28,11 +32,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_language
-    if session[:language].blank? or session[:language].to_sym != I18n.locale
-      session[:language] = 'ru' if session[:language].blank?
-      session[:language] = (['ru', 'en'].include? session[:language]) ? session[:language] : 'ru'
-      I18n.locale =  session[:language].to_sym
-    end
+    I18n.locale =  params[:locale] || I18n.default_locale
+    Rails.application.routes.default_url_options[:locale] = I18n.locale
+  end
+
+  def default_url_options(options = {})
+    {locale: I18n.locale}
   end
 
   def show_delete_link
@@ -46,15 +51,15 @@ class ApplicationController < ActionController::Base
   def get_codes
     #@codes = Code.order(id: :desc).where(status: true).paginate(page: params[:page],per_page: 15)
     unless user_signed_in?
-      @codes = Code.where('(show_from IS NULL OR show_from="") AND status = 1').order(id: :desc)
+      @codes = Code.where('show_from="" AND status = 1').order(id: :desc)
     else
       unless current_user.admin?
-        @codes = Code.where('(show_from IS NULL OR show_from="") AND (status = 1 or user_id=?)', current_user.id).order(id: :desc)
+        @codes = Code.where('show_from="" AND (status = 1 or user_id=?)', current_user.id).order(id: :desc)
       else
         @codes = Code.order(id: :desc)
       end
     end
-    @codes = @codes.paginate(page: params[:page], per_page: 15)
+    @codes = @codes.paginate(page: params[:page], per_page: 25)
   end
   
   protected

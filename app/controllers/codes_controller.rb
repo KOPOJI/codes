@@ -17,7 +17,7 @@ class CodesController < ApplicationController
       @attachments = @code.attachments
     end
 
-    @highlighter = Rouge::Formatters::HTML.new render_options
+    #@highlighter = Rouge::Formatters::HTML.new render_options
 
   end
 

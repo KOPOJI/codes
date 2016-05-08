@@ -18,7 +18,7 @@
 
     <div class="form-inputs">
       <%= f.label :code_id, t('Code') %>
-      <%= f.collection_select :code_id, Code.order(:title), :id, :title, include_blank: true %>
+      <%= f.collection_select :code_id, Code.order(id: :desc, title: :asc), :id, :title, include_blank: true, name: 'id' %>
       <%= f.label :image, t(:image) %>
       <%= f.input_field :image %>
     </div>

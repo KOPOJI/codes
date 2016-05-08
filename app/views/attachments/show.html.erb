@@ -1,8 +1,8 @@
 <% if @attachment.code_id.present? %>
     <p>
       <strong><%= t 'Code' %>:</strong>
-      <% url = @attachment.code.code_url.empty? ? @attachment.code.id : @attachment.code.code_url;
-         title = @attachment.code.title.empty? ? "#{t 'Code'} ##{@attachment.code.id}" : @attachment.code.title
+      <% url = @attachment.code.code_url.blank? ? @attachment.code.id : @attachment.code.code_url;
+         title = @attachment.code.title.blank? ? "#{t 'Code'} ##{@attachment.code.id}" : @attachment.code.title
          title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}"
       %>
       <%= link_to truncate(title, length:35), create_url('codes', url), class: 'link' %>

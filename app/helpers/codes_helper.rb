@@ -20,30 +20,32 @@ module CodesHelper
     code_list = codes
     code_regexp = code_list.values.join('|').gsub(/\s+/u, '')
 
+    i = 0
     text.scan(/\[(#{code_regexp})\](.*?)\[\/\1\]/ium).each do |match|
-	  lexer = match[0].downcase == 'c_cpp' ? 'cpp' : match[0].downcase
-      lexer = Rouge::Lexer.find(lexer) ? lexer : 'text'
       title = match[0]
       code_list.each{ |k, v| title = k if /\A(?:#{v})\z/ui =~ match[0] }
       text.sub! /\[#{Regexp.escape match[0]}\]#{Regexp.escape match[1]}\[\/#{Regexp.escape match[0]}\]/i,
-                "#{lang_title title}#{Rouge.highlight(CGI.unescapeHTML(match[1]), lexer, 'html')}"
+                "#{lang_title title, match[1], i}"
+      i += 1
     end
 
     text.gsub '<br>', ''
   end
 
-    def codes
-      code = File.readlines("#{Rails.root}/app/languages.txt")
-      code_list = {}
-      code.each{|line| tmp = line.strip.split(' => '); code_list[tmp.last] = tmp.first }
-      code_list
-    end
-    def codes_titles
-      code = File.readlines("#{Rails.root}/app/languages_titles.txt")
-      code_list = {}
-      code.each{|line| tmp = line.strip.split(': '); code_list[tmp.last] = tmp.first }
-      code_list
-    end
+  def codes
+    code = File.readlines("#{Rails.root}/app/languages.txt")
+    code_list = {}
+    code.each{|line| tmp = line.strip.split(' => '); code_list[tmp.last] = tmp.first }
+    code_list
+  end
+
+  def codes_titles
+    code = File.readlines("#{Rails.root}/app/languages_titles.txt")
+    code_list = {}
+    code.each{|line| tmp = line.strip.split(': '); code_list[tmp.last] = tmp.first }
+    code_list
+  end
+
   def visible? code
     referer = request.env['HTTP_REFERER']
     code.present? && (user_signed_in? && !current_user.admin? && current_user.id != code.user_id) || !(referer.nil? || (referer.present? && !referer.include?(code.show_from)))
@@ -68,8 +70,8 @@ module CodesHelper
   end
 
   private
-  def lang_title lang
-    "<h6>#{t('Code')} #{lang}</h6><div class='code' lang='#{lang.downcase}'></div>"
+  def lang_title lang, code, data_id = 0
+    "<h6><b>#{t('Code')} #{lang}</b><a href='#' class='select_code' data-id='#{data_id}'>Выделить код</a><a href='#' class='unfold_code' data-id='#{data_id}'>Развернуть код</a></h6><div class='code editor' lang='#{lang.downcase}'>#{code}</div>"
   end
 
   def render_options

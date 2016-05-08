@@ -1,0 +1,84 @@
+<% cache @code do %>
+  <%= simple_form_for @code do |f| %>
+    <% if @code.errors.any? %>
+      <div id="error_explanation" class="text-danger bs-callout bs-callout-danger">
+        <% if locale == :ru %>
+          <h4>Пожалуйста, исправьте следующие ошибки (<%= @code.errors.count %>):</h4>
+        <% else %>
+          <h4><%= pluralize(@code.errors.count, 'error') %> prohibited
+            this code from being saved:</h4>
+        <% end %>
+
+        <ul>
+          <% @code.errors.full_messages.each do |msg| %>
+            <li><%= msg.sub('Code', 'Код') %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label t(:title) %>
+      <%= f.text_field :title, style: 'width: 400px', class: 'form-input form-control' %>
+    </div>
+
+    <% cache 'bb_code' do %>
+      <div class="field">
+        <%= render 'bbcode' %>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.text_area :code, required: true, rows: 30, 'data-editor' => 'javascript', class: 'col-xs-12 col-sm-10 col-md-10 col-lg-10 form-control' %>
+    </div>
+
+    <% if params[:controller] == 'codes' && params[:action] == 'edit' %>
+      <% @code.attachments.each do |attachment| %>
+        <div class="attach_item">
+          <%= link_to "#{attachment.image}", rel: 'prettyPhoto[gallery]' do %>
+            <%= image_tag attachment.image, class: 'attach' %>
+          <% end %>
+          <%= link_to t('Edit'), edit_attachment_path(attachment), class: 'link' %>
+          <%= link_to t('Destroy'), attachment, method: :delete, data: {confirm: t('Are you sure?')}, class: 'link' %>
+        </div>
+      <% end %>
+      <br>
+      <%= f.file_field :image, multiple: true, name: 'attachments[image][]' %>
+    <% else %>
+      <%= f.fields_for :attachments do |p| %>
+        <div class="field">
+          <%= p.label :image %>
+          <br>
+          <%= p.file_field :image, multiple: true, name: 'attachments[image][]' %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if  (@code.new_record? and user_signed_in?) or can_edit? @code, true %>
+      <div class="field checkbox">
+          <%= f.input :editable, label: t(:editable), as: :boolean, checked_value: true %>
+      </div>
+          <br>
+    <% end %>
+
+
+    <% if  user_signed_in? and can_edit? @code, true %>
+      <div class="field checkbox">
+        <%= f.input :status, label: t(:code_status), as: :boolean %>
+      </div>
+      <div class="field">
+        <%= f.label :show_from, t(:show_from) %>
+        <%= f.text_field :show_from, class: 'form-input form-control', style: 'width: 400px' %>
+      </div>
+    <% end %>
+    <% if !@code.new_record? and @code.user_id.nil? and user_signed_in? and current_user.admin? %>
+      <input type="checkbox" name="add_admin_id" id="aid" value="1"> <label for="aid">Add Admin Id</label>
+    <% end %>
+
+        <%= show_simple_captcha distortion: 'high' unless user_signed_in? %>
+
+    <div class="actions" style="margin-top: 20px;">
+      <%= f.submit t(@code.new_record? ? 'Insert' : 'Update'), class: 'button btn btn-primary' %>
+    </div>
+  <% end %>
+<% end %>

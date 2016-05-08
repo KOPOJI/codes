@@ -1,0 +1,83 @@
+jQuery ->
+
+  pre = $('pre.highlight')
+  pl = pre.length
+  for i in [0...pl]
+    pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>'
+    num = pre[i].innerHTML.split(/\n/).length;
+    for j in [1..num]
+      line_num = pre[i].getElementsByTagName('span')[0];
+      line_num.innerHTML += '<span>' + j + '</span>'
+
+  editors = []
+  i = 0
+  defaultHeight = 500
+  minHeight = 200
+
+  $('.editor').each (key, editor) ->
+    editors[i] = ace.edit(editor)
+    editors[i].setTheme("ace/theme/eclipse")
+    editors[i].getSession().setMode(
+      "ace/mode/" + if editor.lang
+        editor.lang.toLowerCase()
+      else
+        'javascript'
+    )
+    editor.style.fontSize='16px';
+    fullHeight = editors[i].getSession().getScreenLength() * editors[i].renderer.lineHeight + editors[i].renderer.scrollBar.getWidth()
+
+    height = if fullHeight > defaultHeight
+        defaultHeight
+      else
+        if fullHeight < minHeight
+          minHeight
+        else
+          fullHeight
+
+    editor.style.height = (
+        if height > 500
+          500
+        else
+          if height < 150
+            150
+          else
+            height
+    ) + 'px'
+
+    editor.style.height = height + 'px'
+    $(editor).attr('data-height', height)
+    editors[i].setReadOnly(true)
+    editors[i].resize()
+    ++i;
+
+  $('.select_code').on 'click', () ->
+    for i in [0 .. editors.length - 1]
+      editors[i].clearSelection()
+      if(i == $(@).data('id'))
+        editors[i].focus()
+        editors[i].selectAll()
+    return false
+
+  $('.unfold_code').on 'click', () ->
+    i = $(@).data('id')
+    folded = $(@).text() == 'Развернуть код'
+    editorHeight = $($('.editor').get(i)).data('height')
+    fullHeight = editors[i].getSession().getScreenLength() * editors[i].renderer.lineHeight + editors[i].renderer.scrollBar.getWidth()
+    $('.editor').get(i).style.height = (
+        if folded && fullHeight > editorHeight
+          $('.row.body').height( $('.row.body').height() + fullHeight - editorHeight)
+          fullHeight
+        else
+          $('.row.body').height( $('.row.body').height() - (fullHeight - editorHeight + 15))
+          editorHeight
+      ) + 'px'
+
+    editors[i].resize()
+    editors[i].focus()
+    $(@).text(
+      if folded
+        'Свернуть код'
+      else
+        'Развернуть код'
+    )
+    return false

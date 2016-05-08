@@ -5,24 +5,24 @@
 
     <div>
       <%= f.label :username, t(:username) %>
-      <%= f.text_field :username, autofocus: true, required: true, class: 'form-input' %>
+      <%= f.text_field :username, autofocus: true, required: true, class: 'form-input form-control' %>
     </div>
 
     <div>
       <%= f.label :email, t(:email) %>
-      <%= f.email_field :email, required: true, class: 'form-input' %>
+      <%= f.email_field :email, required: true, class: 'form-input form-control' %>
     </div>
 
     <div>
       <%= f.label :password, t(:password) %>
-      <%= f.password_field :password, required: true, class: 'form-input' %></div>
+      <%= f.password_field :password, required: true, class: 'form-input form-control' %></div>
 
     <div>
       <%= f.label :password_confirmation, t(:password_confirmation) %>
-      <%= f.password_field :password_confirmation, required: true, class: 'form-input' %>
+      <%= f.password_field :password_confirmation, required: true, class: 'form-input form-control' %>
     </div>
 
-    <div><%= f.submit t('Sign up'), class: 'button' %>
+    <div><%= f.submit t('Sign up'), class: 'button btn btn-primary' %>
     </div>
 <% end %>
 

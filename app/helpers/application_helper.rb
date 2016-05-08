@@ -1,8 +1,8 @@
-require 'pascal'
+#require 'pascal'
 module ApplicationHelper
 
   def app_name
-    'SaveCode'
+    'SaveCode.RU'
   end
 
   def page_title title=nil
@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def home_url
-    '/'
+    "/#{locale}/"
   end
 
   def url_suffix
@@ -19,6 +19,7 @@ module ApplicationHelper
   end
 
   def create_url url=nil
+    return home_url if url.nil?
     create_uri url
   end
 
@@ -29,7 +30,9 @@ module ApplicationHelper
   def create_uri url
     url = home_url + url unless url.starts_with? home_url
     url += url_suffix unless url.end_with? url_suffix
-    url += '?page=' + params[:page] unless params[:page].nil?
+    if url.include? 'codes'
+      url += '?page=' + params[:page] unless params[:page].nil?
+    end
     url
   end
 

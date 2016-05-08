@@ -10,11 +10,17 @@ class Code < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :attachments
 
+  after_initialize :init
+
   def assign_unique_token
     self.code_url = Digest::SHA1.hexdigest(Time.now.to_s)
   end
   def set_title
     self.update!(title: "Unnamed ##{self.id}") if self.title.blank?
+  end
+
+  def init
+    self.title = "#{I18n.t 'Code'} ##{self.id}" if self.title.blank? or self.title == "Unnamed ##{self.id}"
   end
 
 end

@@ -5,10 +5,10 @@
 
     <div>
       <%= f.label :email, t(:email) %>
-      <%= f.email_field :email, autofocus: true, class: 'form-input' %>
+      <%= f.email_field :email, autofocus: true, class: 'form-input form-control' %>
     </div>
 
-    <div><%= f.submit t('Resend confirmation instructions'), class: 'button' %></div>
+    <div><%= f.submit t('Resend confirmation instructions'), class: 'button btn btn-primary' %></div>
 <% end %>
 
 <%= render '/users/form', start: false %>

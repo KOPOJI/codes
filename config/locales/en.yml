@@ -8,6 +8,7 @@ en:
       default: 'Secret Code did not match with the Image'
       user: 'The secret Image and code were different'
 
+  back_to_top: 'Back to top'
   Illegal characters: 'Used illegal characters.'
   code_status: 'Visible'
   try: 'Try'
