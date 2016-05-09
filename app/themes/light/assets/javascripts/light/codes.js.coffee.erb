@@ -17,9 +17,19 @@ jQuery ->
   $('.editor').each (key, editor) ->
     editors[i] = ace.edit(editor)
     editors[i].setTheme("ace/theme/eclipse")
+    <% extend CodesHelper %>
+
+    supportedModes = <%= codes.to_json %>
+    mode = editor.lang.toLowerCase()
+
+    for key of supportedModes
+      if -1 != key.toLowerCase().indexOf(mode) || -1 != supportedModes[key].toLowerCase().indexOf(mode)
+        mode = supportedModes[key].split('|')[0].toLowerCase()
+        break
+
     editors[i].getSession().setMode(
       "ace/mode/" + if editor.lang
-        editor.lang.toLowerCase()
+        mode
       else
         'javascript'
     )

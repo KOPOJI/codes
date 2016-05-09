@@ -11,7 +11,6 @@ jQuery ->
 
 
   $(window).on 'scroll', ->
-    console.log $(window).scrollTop()
     if $(window).scrollTop() > 100
       $('#top-link-block').hasClass('hidden') && $('#top-link-block').removeClass('hidden')
     else
