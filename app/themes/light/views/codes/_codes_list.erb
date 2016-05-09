@@ -5,8 +5,6 @@
       <% @codes.each do |code| %>
         <% next if code.show_from.present? and !can_edit?(code, true) and !visible?(code) %>
 
-        <% cache "#{code}#{current_code?(code.id)}" do %>
-
           <% #url = code.code_url.empty? ? code.id : code.code_url;
              title = code.title.empty? ? "#{t 'Code'} ##{code.id}" : code.title
              title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}"
@@ -16,8 +14,6 @@
             <%= link_to truncate(sanitize(title), length: 28), create_url('codes', url) %>
             <%= link_to 'X', create_url('codes', 'delete', code.id), method: :delete, style: 'color:red;display:inline' if show_delete_links? %>
           </li>
-
-        <% end %>
 
       <% end %>
     </ul>
