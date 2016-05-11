@@ -39,9 +39,12 @@ gem 'themes_on_rails'
 
 gem 'fancybox2-rails', '~> 0.2.8'
 
+#admin
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
 #users
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
 gem 'simple_captcha2', require: 'simple_captcha'
 # Use mysql as the database for Active Record
 group :development do

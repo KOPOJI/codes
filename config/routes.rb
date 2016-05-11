@@ -1,5 +1,7 @@
 Codes::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   locales = I18n.available_locales.join('|')
 
   root to: redirect("/#{I18n.default_locale}/", status: 301), as: :redirected_root

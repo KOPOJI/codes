@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_language, :get_codes
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   after_action :user_activity
 
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
@@ -61,13 +61,13 @@ class ApplicationController < ActionController::Base
     end
     @codes = @codes.paginate(page: params[:page], per_page: 25)
   end
-  
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username
   end
-  
+
   private
 
   def user_activity
