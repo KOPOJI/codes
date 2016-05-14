@@ -8,14 +8,6 @@
     <% title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}" %>
     <% content_for :title, "#{t 'Show code'} #{title}" %>
 
-    <% title "#{t 'Show code'} '#{title}'" %>
-    <% description "#{t 'Show code'} '#{title}', #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
-    <% keywords    "#{t 'Show code'} #{title}, #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
-
-    <% unless @code.user.nil? %>
-      <% set_meta_tags author: "#{request.base_url}/#{locale}/user/#{@code.user.id}#{url_suffix}" %>
-    <% end %>
-
        <div class="post">
 
       <div style="font-size:10px;font-style:italic;border-bottom: 1px solid #CCC;padding:3px;margin:3px;padding-left:15px">
@@ -41,6 +33,14 @@
     </div>
 
   <% end %>
+
+    <% title "#{t 'Show code'} '#{title}'" %>
+    <% description "#{t 'Show code'} '#{title}', #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
+    <% keywords    "#{t 'Show code'} #{title}, #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
+
+    <% unless @code.user.nil? %>
+        <% set_meta_tags author: "#{request.base_url}/#{locale}/user/#{@code.user.id}#{url_suffix}" %>
+    <% end %>
 
 <% end %>
 
