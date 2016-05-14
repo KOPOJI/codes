@@ -1,6 +1,8 @@
-<% content_for :title, t('Edit code') %>
-
-<h3><%= t 'Edit' %> <%= @code.title.blank? ? "##{@code.id}" : @code.title %></h3>
+<% codeTitle = @code.title.blank? ? "##{@code.id}" : @code.title %>
+<% content_for :title, "#{t 'Editing code'} #{codeTitle}" %>
+<% title "#{t 'Editing code'} #{codeTitle}" %>
+<% description "#{t 'Editing code'} #{codeTitle}" %>
+<% keywords t 'Editing code' %>
 
 <%= render 'form' %>
 

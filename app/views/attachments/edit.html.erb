@@ -1,4 +1,7 @@
-<h1><%= t 'Editing picture' %></h1>
+<% content_for :title, "#{t 'Image editing'} ##{@attachment.id}" %>
+<% title "#{t 'Image editing'} ##{@attachment.id}" %>
+<% description "#{t 'Image editing'} ##{@attachment.id}" %>
+<% keywords t 'Image editing' %>
 
 <%= render 'form' %>
 

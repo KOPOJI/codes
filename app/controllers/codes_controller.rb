@@ -1,7 +1,7 @@
 class CodesController < ApplicationController
   before_action :set_code, only: [:show, :edit, :update, :destroy]
   before_action {extend CodesHelper}
-  load_and_authorize_resource
+  #load_and_authorize_resource
   def index
     #@code = Code.order(id: :desc).find_by(status: 1, show_from: nil)
     #render action: :show

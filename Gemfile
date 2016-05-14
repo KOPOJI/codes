@@ -42,6 +42,9 @@ gem 'fancybox2-rails', '~> 0.2.8'
 #admin
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
+#seo
+gem 'meta-tags'
+
 #users
 gem 'devise'
 gem 'cancancan'

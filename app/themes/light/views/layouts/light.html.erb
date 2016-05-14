@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="<%= locale %>">
 <head>
-  <meta charset="utf-8">
-  <meta name="keywords" content="заметка, добавить заметку, pastebin, загрузка картинок">
-  <meta name="description" content="SaveCode.RU - это сайт, где Вы можете сохранить любой текст с картинками или без них, без регистрации и навязчивой рекламы.">
-  <title><%= page_title yield(:title) %></title>
+  <% title yield(:title) %>
+  <% set_meta_tags canonical:  request.base_url + request.path if request.query_parameters[:page].present? %>
+  <% if request.query_parameters[:page].present? %>
+      <% if request.query_parameters[:page].to_i > 1 %>
+        <% set_meta_tags prev: request.original_url.sub(/(?<=page=)\d+/i, (request.query_parameters[:page].to_i - 1).to_s) %>
+      <% end %>
+      <% if request.query_parameters[:page].to_i + 1 < @codes.total_pages %>
+        <% set_meta_tags next: request.original_url.sub(/(?<=page=)\d+/i, (request.query_parameters[:page].to_i + 1).to_s) %>
+      <% end %>
+  <% end %>
+  <% alternates = Hash.new; locales = I18n.available_locales.join '|' %>
+  <% I18n.available_locales.each do |loc| %>
+      <% next if loc == locale %>
+      <% req_path = request.path.sub(/^\/?(?:#{locales})/i, "/#{loc}")
+         req_path += '/' if req_path == "/#{loc}"
+         alternates[loc] = request.base_url + req_path
+      %>
+  <% end %>
+  <% set_meta_tags alternate: alternates unless alternates.blank? %>
+  <%= display_meta_tags site: app_name, separator: '&mdash;'.html_safe, charset: 'utf-8', og: {
+      title: :title
+  } %>
 
   <% cache "head#{request.original_fullpath}" do %>
 
@@ -41,6 +59,10 @@
     <%= render '/codes/codes_list' %>
 
     <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10 content">
+      <% if title.present? %>
+        <h1><%= title %></h1>
+      <% end %>
+
       <%= raw bootstrap_flash %>
       <%= yield %>
     </div>

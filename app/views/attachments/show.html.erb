@@ -1,3 +1,8 @@
+<% content_for :title, "#{t 'Show image'} ##{@attachment.id}" %>
+<% title "#{t 'Show image'} ##{@attachment.id}" %>
+<% description "#{t 'Show image'} ##{@attachment.id}" %>
+<% keywords t 'Show image' %>
+
 <% if @attachment.code_id.present? %>
     <p>
       <strong><%= t 'Code' %>:</strong>

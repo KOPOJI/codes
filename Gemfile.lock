@@ -115,6 +115,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    meta-tags (2.1.0)
+      actionpack (>= 3.0.0)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
@@ -222,6 +224,7 @@ DEPENDENCIES
   fancybox2-rails (~> 0.2.8)
   jbuilder
   jquery-rails
+  meta-tags
   mini_magick
   mysql2 (~> 0.3.18)
   pg

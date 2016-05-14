@@ -1,6 +1,9 @@
-<% if @attachments.present? %>
-    <h1><%= t 'Listing pictures' %></h1>
+<% content_for :title, t('Listing pictures') %>
+<% title t 'Listing pictures' %>
+<% description t 'Listing pictures' %>
+<% keywords t 'Listing pictures' %>
 
+<% if @attachments.present? %>
     <div class="attachchments">
       <% @attachments.each do |attachment| %>
           <div class="attach_item">

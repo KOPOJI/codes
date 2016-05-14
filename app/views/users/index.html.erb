@@ -1,17 +1,21 @@
+<% content_for :title, t('Listing users') %>
+<% title t 'Listing users' %>
+<% description t 'Listing users' %>
+<% keywords t 'Listing users' %>
+
 <div class="post">
-	<h2>Список пользователей</h2>
 
 	<% if @users.empty? %>
-		В настоящее время ни одного пользователя не зарегистрировано..
+    <%= t 'Users not found' %>..
 	<% else %>
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Логин</th>
-					<th>Регистрация</th>
-					<th>Сообщений</th>
-					<th>Последний визит</th>
-					<th>Аватар</th>
+					<th><%= t 'Username' %></th>
+					<th><%= t 'Register date' %></th>
+					<th><%= t 'Messages count' %></th>
+					<th><%= t 'Last visit' %></th>
+					<th><%= t 'Avatar' %></th>
 				</tr>
 			</thead>
 			<tbody>
