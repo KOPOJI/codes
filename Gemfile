@@ -44,6 +44,7 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 #seo
 gem 'meta-tags'
+gem 'sitemap_generator'
 
 #users
 gem 'devise'

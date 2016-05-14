@@ -13,6 +13,14 @@ module ApplicationHelper
   def home_url
     "/#{locale}/"
   end
+  def trailing_slash url
+    return home_url if url.nil?
+    if (t = url.sub(/(?<!\/)(?=\?.*?)/, '/')) != url
+      return t
+    end
+    return url if url =~ /\/$|\.(?:html?|xml|s?css|js|gz|jpe?g|png|gif)$/i
+    url + '/'
+  end
 
   def url_suffix
     '.html'

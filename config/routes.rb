@@ -1,16 +1,23 @@
-Codes::Application.routes.draw do
+CodesApp::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   locales = I18n.available_locales.join('|')
 
   root to: redirect("/#{I18n.default_locale}/", status: 301), as: :redirected_root
+  get '/codes' => redirect("/#{I18n.default_locale}/", status: 301)
 
-  get '*path', to: redirect { |params, req|
+  get '/codes/:id' => redirect('/ru/codes/%{id}.html', status: 301)
+  get '/codes/:id/edit' => redirect('/ru/codes/%{id}/edit.html', status: 301)
+  get '/attachments/:id' => redirect('/ru/attachments/%{id}.html', status: 301)
+  get '/attachments' => redirect('/ru/attachments.html', status: 301)
+  get '/attachments/:id/edit' => redirect('/ru/attachments/%{id}/edit.html', status: 301)
+
+  get '*path' => redirect { |params, req|
     return "#{req.path}/?page=#{req.query_parameters[:page]}" if (req.path =~ /^\/?(?:#{locales})$/i) && req.query_parameters[:page].present?
     req.query_parameters[:page].present? ? "#{req.path}.html?page=#{req.query_parameters[:page]}" : "#{req.path}.html"
   }, constraints: lambda {
-      |req| !(req.path =~ /^\/?(?:#{locales})\/?$/i) && !(req.path =~ /\.(?:html|s?css|js|jpe?g|png|gif)/i)
+      |req| !(req.path =~ /^\/?(?:#{locales})\/?$/i) && !(req.path =~ /\.(?:html?|xml|s?css|js|jpe?g|png|gif)/i)
   }, status: 301
 
   scope '(:locale)', locale: /#{locales}/i do

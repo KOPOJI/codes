@@ -185,6 +185,8 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    sitemap_generator (5.1.0)
+      builder
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -235,6 +237,7 @@ DEPENDENCIES
   seed_dump
   simple_captcha2
   simple_form
+  sitemap_generator
   themes_on_rails
   uglifier
   web-console

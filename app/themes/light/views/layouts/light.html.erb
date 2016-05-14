@@ -2,19 +2,19 @@
 <html lang="<%= locale %>">
 <head>
   <% title yield(:title) %>
-  <% set_meta_tags canonical:  request.base_url + request.path if request.query_parameters[:page].present? %>
+  <% set_meta_tags canonical:  request.base_url + trailing_slash(request.path) if request.query_parameters[:page].present? %>
   <% if request.query_parameters[:page].present? %>
       <% if request.query_parameters[:page].to_i > 1 %>
-        <% set_meta_tags prev: request.original_url.sub(/(?<=page=)\d+/i, (request.query_parameters[:page].to_i - 1).to_s) %>
+        <% set_meta_tags prev: trailing_slash(request.original_url).sub(/(?<=page=)\d+/i, (request.query_parameters[:page].to_i - 1).to_s) %>
       <% end %>
       <% if request.query_parameters[:page].to_i + 1 < @codes.total_pages %>
-        <% set_meta_tags next: request.original_url.sub(/(?<=page=)\d+/i, (request.query_parameters[:page].to_i + 1).to_s) %>
+        <% set_meta_tags next: trailing_slash(request.original_url).sub(/(?<=page=)\d+/i, (request.query_parameters[:page].to_i + 1).to_s) %>
       <% end %>
   <% end %>
   <% alternates = Hash.new; locales = I18n.available_locales.join '|' %>
   <% I18n.available_locales.each do |loc| %>
       <% next if loc == locale %>
-      <% req_path = request.path.sub(/^\/?(?:#{locales})/i, "/#{loc}")
+      <% req_path = trailing_slash(request.path).sub(/^\/?(?:#{locales})/i, "/#{loc}")
          req_path += '/' if req_path == "/#{loc}"
          alternates[loc] = request.base_url + req_path
       %>
