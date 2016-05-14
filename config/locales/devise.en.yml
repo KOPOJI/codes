@@ -1,6 +1,45 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 en:
+  username: 'Username'
+  email: 'E-mail'
+  password: 'Password'
+  password_confirmation: 'Password confirmation'
+  Sign in: 'Sign in'
+  Sign up: 'Sign up'
+  Sign: 'Sign'
+  remember_me: 'Remember me'
+  Resend confirmation instructions: 'Resend confirmation instructions'
+  Welcome: 'Welcome'
+  You can confirm your account email through the link below: 'You can confirm your account email through the link below'
+  Confirm my account: 'Confirm my account'
+  Hello: 'Hello'
+  'Someone has requested a link to change your password. You can do this through the link below': 'Someone has requested a link to change your password. You can do this through the link below'
+  'Change my password': 'Change my password'
+  "If you didn't request this, please ignore this email.": "If you didn't request this, please ignore this email."
+  "Your password won't change until you access the link above and create a new one.": "Your password won't change until you access the link above and create a new one."
+  'Your account has been locked due to an excessive number of unsuccessful sign in attempts': 'Your account has been locked due to an excessive number of unsuccessful sign in attempts'
+  'Click the link below to unlock your account': 'Click the link below to unlock your account'
+  'Unlock my account': 'Unlock my account'
+  'Change your password': 'Change your password'
+  'New password': 'New password'
+  'Confirm new password': 'Confirm new password'
+  'Forgot your password?': 'Forgot your password?'
+  'Send me reset password instructions' : 'Send me reset password instructions'
+  Edit: 'Edit'
+  'Currently waiting confirmation for': 'Currently waiting confirmation for'
+  "leave blank if you don't want to change it": "leave blank if you don't want to change it"
+  'we need your current password to confirm your changes': 'we need your current password to confirm your changes'
+  Update: 'Update'
+  'Cancel my account': 'Cancel my account'
+  'Unhappy?': 'Unhappy?'
+  'Are you sure?': 'Are you sure?'
+  Back: 'Back'
+  "Didn't receive confirmation instructions?": "Didn't receive confirmation instructions?"
+  "Didn't receive unlock instructions?": "Didn't receive unlock instructions?"
+  'Sign in with': 'Sign in with'
+  'Log out': 'Log out'
+  'Resend unlock instructions': 'Resend unlock instructions'
   devise:
     confirmations:
       confirmed: "Your account was successfully confirmed."

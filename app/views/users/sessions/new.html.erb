@@ -1,3 +1,8 @@
+<% content_for :title, t('sign_in_title') %>
+<% title t 'sign_in_title' %>
+<% description t 'sign_in' %>
+<% keywords t 'sign_in' %>
+
 <%= render '/users/form', start: true, header: t('Sign in') %>
 
 <%= simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>

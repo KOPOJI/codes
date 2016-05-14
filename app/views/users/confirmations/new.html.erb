@@ -1,3 +1,8 @@
+<% content_for :title, t('Password Recovery') %>
+<% title t 'Password Recovery' %>
+<% description t 'Password Recovery Form' %>
+<% keywords t 'Password Recovery Form' %>
+
 <%= render '/users/form', start: true, header: t('Resend confirmation instructions') %>
 
 <%= simple_form_for resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post} do |f| %>

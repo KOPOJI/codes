@@ -13,6 +13,13 @@ ru:
   Messages count: 'Сообщений'
   Last visit: 'Последний визит'
   Avatar: 'Аватар'
+  Show profile of: 'Просмотр профиля пользователя'
+  Password Recovery Form: 'Форма восстановления пароля'
+  Password Recovery: 'Восстановление пароля'
+
+  create_account: 'Регистрация на сайте'
+  sign_in_title: 'Вход на сайт'
+  sign_in: 'Авторизация на сайте'
 
   Code list by user: 'Просмотр списка сообщения пользователя'
   Image editing: 'Редактирование изображения'

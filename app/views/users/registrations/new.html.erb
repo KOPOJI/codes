@@ -1,3 +1,8 @@
+<% content_for :title, t('create_account') %>
+<% title t 'create_account' %>
+<% description t 'create_account' %>
+<% keywords t 'create_account' %>
+
 <%= render '/users/form', start: true, header: t('Sign up') %>
 
 <%= simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
@@ -21,8 +26,9 @@
       <%= f.label :password_confirmation, t(:password_confirmation) %>
       <%= f.password_field :password_confirmation, required: true, class: 'form-input form-control' %>
     </div>
-
-    <div><%= f.submit t('Sign up'), class: 'button btn btn-primary' %>
+<br>
+    <div>
+      <%= f.submit t('Sign up'), class: 'button btn btn-primary' %>
     </div>
 <% end %>
 

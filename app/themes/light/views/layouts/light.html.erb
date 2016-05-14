@@ -20,7 +20,7 @@
       %>
   <% end %>
   <% set_meta_tags alternate: alternates unless alternates.blank? %>
-  <%= display_meta_tags site: app_name, separator: '&mdash;'.html_safe, charset: 'utf-8', og: {
+  <%= display_meta_tags site: app_name, separator: '&mdash;'.html_safe, charset: 'utf-8', reverse: true, og: {
       title: :title,
       description: :description,
   } %>

@@ -13,6 +13,13 @@ en:
   Messages count: 'Messages count'
   Last visit: 'Last visit'
   Avatar: 'Avatar'
+  Show profile of: 'Show profile of'
+  Password Recovery Form: 'Password Recovery Form'
+  Password Recovery: 'Password Recovery'
+
+  create_account: 'Create account'
+  sign_in: 'Sign in'
+  sign_in_title: 'Sign in'
 
   Code list by user: 'View a list of posts by'
   back_to_top: 'Back to top'
