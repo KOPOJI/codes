@@ -21,7 +21,8 @@
   <% end %>
   <% set_meta_tags alternate: alternates unless alternates.blank? %>
   <%= display_meta_tags site: app_name, separator: '&mdash;'.html_safe, charset: 'utf-8', og: {
-      title: :title
+      title: :title,
+      description: :description,
   } %>
 
   <% cache "head#{request.original_fullpath}" do %>
