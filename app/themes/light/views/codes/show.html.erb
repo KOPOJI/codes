@@ -2,7 +2,7 @@
     <%= t 'no_codes' %>..
 <% else %>
 
-  <% cache @code do %>
+  <% #cache @code do %>
 
     <% title = @code.title.empty? ? "#{t 'Code'} ##{@code.id}" : @code.title %>
     <% title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}" %>
@@ -32,7 +32,7 @@
 
     </div>
 
-  <% end %>
+  <% #end %>
 
     <% title "#{t 'Show code'} '#{title}'" %>
     <% description "#{t 'Show code'} '#{title}', #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
