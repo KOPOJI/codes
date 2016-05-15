@@ -9,3 +9,6 @@ Disallow: /*edit*
 
 Host: savecode.ru
 Sitemap: https://savecode.ru/sitemap.xml.gz
+
+User-agent: Yandex
+Sitemap: https://savecode.ru/yandex/sitemap.xml.gz
