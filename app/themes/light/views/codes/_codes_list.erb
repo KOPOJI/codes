@@ -18,7 +18,7 @@
       <% end %>
     </ul>
     <div class="apple_pagination">
-      <%= will_paginate @codes, container: false, inner_window: 1, outer_window: 0 %>
+      <%= will_paginate(@codes, container: false, inner_window: 1, outer_window: 0).gsub(/Previous|Next/, '').html_safe %>
     </div>
   </div>
 </div>

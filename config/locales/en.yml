@@ -8,6 +8,15 @@ en:
       default: 'Secret Code did not match with the Image'
       user: 'The secret Image and code were different'
 
+  user_with_id_not_found: 'User with id'
+  not_found: 'is not found'
+  found: 'Found'
+  message: 'message'
+  by: 'by'
+  without_messages: 'did not leave messages'
+
+  update_image: 'Update image'
+  upload_image: 'Загрузить изображение'
   save_code_is_simple: 'Save the code or load an image it is easy'
   main_description: 'is a site where you can store any text with images or without them, without registration and hype.'
   main_keywords: 'note, add a note, upload pictures, view the saved codes'
@@ -40,6 +49,18 @@ en:
   Listing users: 'Listing users'
   Language: 'Language'
   Profile: 'Profile'
+  Name: 'Name'
+  Interests: 'Interests'
+  Experience: 'Experience'
+  About me: 'About me'
+  Signature: 'Signature'
+
+  avatar:
+    crop_submit: 'Crop'
+  'Profile updated': 'Profile updated'
+
+  current_password: 'Current password'
+
   Not specified: 'Not specified'
   Added by: 'Added by'
   Send: 'Send'

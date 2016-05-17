@@ -17,13 +17,20 @@
     <% end %>
 
     <div class="form-inputs">
-      <%= f.label :code_id, t('Code') %>
-      <%= f.collection_select :code_id, Code.order(id: :desc, title: :asc), :id, :title, include_blank: true, name: 'id' %>
-      <%= f.label :image, t(:image) %>
-      <%= f.input_field :image %>
+      <div class="form-group">
+        <%= f.label :code_id, t('Code') %>
+        <%= f.collection_select :code_id, Code.order(id: :desc, title: :asc), :id, :title, {name: 'id', include_blank: true}, {
+            class: 'form-control', style: 'max-width: 450px'
+        } %>
+      </div>
+      <div class="form-group">
+        <%= f.label :image, t(:image) %>
+        <%= f.input_field :image, class: 'form-control', style: 'max-width: 450px;' %>
+      </div>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, t(@attachment.new_record? ? 'Upload' : 'Update') %>
+      <%= f.button :submit, t(@attachment.new_record? ? 'Upload' : 'Update'), class: 'button btn btn-primary' %>
     </div>
 <% end %>
+<br>

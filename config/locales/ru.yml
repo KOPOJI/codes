@@ -8,6 +8,15 @@ ru:
       default: 'Неправильный проверочный код'
       user: 'Картинка и код различаются'
 
+  user_with_id_not_found: 'Пользователь с таким id'
+  not_found: 'не найден'
+  found: 'Найдено'
+  message: 'сообщений'
+  by: 'от'
+  without_messages: 'не оставлял(а) сообщений'
+
+  update_image: 'Обновить изображение'
+  upload_image: 'Загрузить изображение'
   Username: 'Логин'
   Register date: 'Регистрация'
   Messages count: 'Сообщений'

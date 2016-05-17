@@ -1,14 +1,14 @@
 <div class="post">
   <% if @user.nil? %>
       <% user = "##{params[:user_id]}" %>
-      Пользователь с таким id (<%= params[:user_id] %>) не найден.
+      <%= t 'user_with_id_not_found' %> (<%= params[:user_id] %>) <%= t 'not_found' %>.
   <% else %>
       <% user = @user.username %>
 
       <% if @user.codes.count.zero? %>
-          <b><%= link_to @user.username, create_url('user', @user.id) %></b> не оставлял(а) сообщений
+          <b><%= link_to @user.username, create_url('user', @user.id) %></b> <%= t 'without_messages' %>
       <% else %>
-          Found <%= pluralize @user.codes.count, 'message' %> by <b><%= link_to @user.username, create_url('user', @user.id) %></b>:
+          <%= t 'found' %> <%= locale == :ru ? t('message') : pluralize(@user.codes.count, t('message')) %> <%= t 'by' %> <b><%= link_to @user.username, create_url('user', @user.id) %></b>:
           <br>
           <br>
           <% @user.codes.order(id: :desc).each do |code| %>

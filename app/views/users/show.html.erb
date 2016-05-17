@@ -11,9 +11,11 @@
       <%= image_tag(@user.profile.avatar_url) if @user.profile.present? && @user.profile.avatar? %>
       <% if current_user?(@user) %>
         <%= simple_form_for @user.profile, url: create_url('user', 'profile'), html: {multipart: true} do |f| %>
-          <%= f.file_field :avatar %>
+              <br>
+          <%= f.file_field :avatar, class: 'form-control', style: 'width: 260px' %>
           <%= f.hidden_field :avatar_cache %>
-          <%= f.submit 'Upload', class: 'button' %>
+              <br>
+          <%= f.submit t(@user.profile.present? && @user.profile.avatar? ? 'update_image' : 'upload_image'), class: 'button btn btn-primary' %>
         <% end %>
       <% end %>
     </div>
