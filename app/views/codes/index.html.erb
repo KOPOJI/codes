@@ -4,9 +4,10 @@
 
 <% cache "index_#{locale}" do %>
   <div class="post">
-    <b>SaveCode.RU</b> - это сайт, где Вы можете сохранить любой текст, с картинками или без них, без регистрации и навязчивой
-    рекламы.<br><br><br>
-    Сохранить код - это просто:<br><br>
+    <b>SaveCode.RU</b> - <%= t 'main_description' %>
+    <br><br><br>
+    <%= t 'save_code_is_simple' %>:
+    <br><br>
 
     <div class="example">
       <%= link_to path_to_image('insert_code/insert_code_example.png'), rel: 'prettyPhoto[gallery]' do %>

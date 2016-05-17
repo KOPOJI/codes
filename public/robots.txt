@@ -6,6 +6,7 @@ Disallow: /cgi-bin
 Disallow: /admin
 Disallow: /pm
 Disallow: /*edit*
+Disallow: /language*
 
 Host: savecode.ru
 Sitemap: https://savecode.ru/sitemap.xml.gz

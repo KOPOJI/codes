@@ -8,6 +8,9 @@ en:
       default: 'Secret Code did not match with the Image'
       user: 'The secret Image and code were different'
 
+  save_code_is_simple: 'Save the code or load an image it is easy'
+  main_description: 'is a site where you can store any text with images or without them, without registration and hype.'
+  main_keywords: 'note, add a note, upload pictures, view the saved codes'
   Username: 'Username'
   Register date: 'Register date'
   Messages count: 'Messages count'
