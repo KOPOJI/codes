@@ -34,8 +34,8 @@
 
   <% #end %>
 
-    <% title "#{t 'Show code'} '#{title}'" %>
-    <% description "#{t 'Show code'} '#{title}', #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
+    <% title "#{t 'Show code'} #{title}" %>
+    <% description "#{t 'Show code'} #{title}, #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
     <% keywords    "#{t 'Show code'} #{title}, #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
 
     <% unless @code.user.nil? %>
