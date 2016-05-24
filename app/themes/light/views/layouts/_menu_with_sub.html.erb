@@ -55,12 +55,12 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t 'Language' %> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>
-                  <%= link_to request.original_fullpath.sub(/^\/(?:#{I18n.available_locales.join('|')})\//, '/ru/'), alt: 'Русский язык', title: 'Русский язык' do %>
+                  <%= link_to request.original_fullpath.sub(/^\/(?:#{I18n.available_locales.join('|')})\//, '/ru/'), title: 'Русский язык' do %>
                     <%= image_tag image_path('flag_russian.gif'), alt: 'Русский язык' %> Русский
           <% end %>
                 </li>
                 <li>
-                  <%= link_to request.original_fullpath.sub(/^\/(?:#{I18n.available_locales.join('|')})\//, '/en/'), alt: 'English', title: 'English' do %>
+                  <%= link_to request.original_fullpath.sub(/^\/(?:#{I18n.available_locales.join('|')})\//, '/en/'), title: 'English' do %>
                      <%= image_tag image_path('flag_english.gif'), alt: 'English' %> English
                   <% end %>
                 </li>
