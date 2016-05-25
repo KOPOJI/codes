@@ -19,3 +19,6 @@ jQuery ->
   $('#top-link-block').on 'click', ->
     $('html,body').animate({ scrollTop: 0 }, 700)
     return false
+  $("#menu-toggle").on 'click', (e) ->
+    e.preventDefault()
+    $("#wrapper").toggleClass('toggled')

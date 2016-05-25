@@ -43,7 +43,6 @@
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png' %>
     <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon' %>
 
-    <%= stylesheet_link_tag 'light/all', media: 'all', type: 'text/css', 'data-turbolinks-track' => true %>
 
   <% end %>
 
@@ -52,7 +51,7 @@
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" id="wrapper">
 
   <div class="row">
     <%= render '/layouts/menu_with_sub' %>
@@ -62,7 +61,7 @@
 
     <%= render '/codes/codes_list' %>
 
-    <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10 content">
+    <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10 content" id="page-content-wrapper">
       <% if title.present? %>
         <h1><%= title %></h1>
       <% end %>
@@ -95,6 +94,8 @@
       <i class="glyphicon glyphicon-chevron-up"></i> <%= t 'back_to_top' %>
     </a>
 </span>
+
+      <%= stylesheet_link_tag 'light/all', media: 'all', type: 'text/css', 'data-turbolinks-track' => true %>
       <%= javascript_include_tag 'light/all', type: 'text/javascript', 'data-turbolinks-track' => true %>
 </body>
 </html>
