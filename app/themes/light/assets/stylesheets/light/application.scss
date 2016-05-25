@@ -151,7 +151,7 @@ div.bbcodes a.bbcode:hover {
 }
 @media screen and (max-width: 500px) {
   body, .sidebar-nav .nav-list > li > a {
-    font-size: 12px;
+    font-size: 11px;
   }
   .navbar-nav {
     margin: 0 -15px;
@@ -159,7 +159,7 @@ div.bbcodes a.bbcode:hover {
   .navbar-nav > li > a, .navbar-nav .open .dropdown-menu > li > a {
     padding-top: 5px;
     padding-bottom: 5px;
-    line-height: 12px;
+    line-height: 15px;
   }
   .apple_pagination {
     margin: 15px 0;
@@ -169,6 +169,13 @@ div.bbcodes a.bbcode:hover {
   }
   .post {
     margin-left: 0;
+  }
+  .post h6 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .sidebar-nav .nav-list > li > a {
+    padding: 5px 7px;
   }
 }
 label {
@@ -235,7 +242,8 @@ label {
 .navbar-toggle .icon-bar {
   background: #ddd;
 }
-.post h6 {
-  margin-top: 15px;
-  margin-bottom: 15px;
+
+.nav-menu {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
