@@ -11,7 +11,7 @@
              url = "#{code.id}"
           %>
           <li<%= ' class=current' if current_code?(url) %>>
-            <%= link_to truncate(sanitize(title), length: 28), create_url('codes', url) %>
+            <%= link_to truncate(sanitize(title), length: 28), create_url('codes', url), title: "#{t 'View code'} #{title}" %>
             <%= link_to 'X', create_url('codes', 'delete', code.id), method: :delete, style: 'color:red;display:inline' if show_delete_links? %>
           </li>
 
