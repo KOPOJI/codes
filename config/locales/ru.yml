@@ -1,5 +1,9 @@
 ru:
 
+  404: 'Ошибка 404 - Страница не найдена'
+  The page you were looking for doesn't exist (404): 'Запрашиваемая страница не найдена (ошибка 404)'
+  You may have mistyped the address or the page may have moved: 'Возможно, Вы ошиблись при вводе адреса или страница была перемещена'
+
   simple_captcha:
     placeholder: 'Введите код'
     label: 'Введите код с картинки'

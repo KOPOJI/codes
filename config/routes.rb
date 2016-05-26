@@ -1,5 +1,9 @@
 CodesApp::Application.routes.draw do
 
+  %w( 404 422 500 503 ).each do |code|
+    get code, :to => 'errors#show', :code => code
+  end
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   locales = I18n.available_locales.join('|')
