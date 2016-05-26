@@ -97,7 +97,7 @@ class CodesController < ApplicationController
               @attachments = @code.attachments.create!(image: a, code_id: @code.id)
             end
           end
-          format.html { redirect_to "/codes/#{@code.code_url.empty? ? @code.id : @code.code_url}.html", notice: I18n.t('Code was successfully updated') }
+          format.html { redirect_to "/codes/#{@code.code_url.blank? ? @code.id : @code.code_url}.html", notice: I18n.t('Code was successfully updated') }
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
