@@ -15,7 +15,7 @@
         <%= t 'Last edited' %>: <%= @code.updated_at.to_s(:ru_datetime) %>
       </div>
 
-        <%= raw parse_bb_codes @code.code %>
+        <%= raw nl2br(parse_bb_codes @code.code) %>
 
       <% if @attachments.present? %>
           <fieldset>
