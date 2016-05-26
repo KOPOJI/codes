@@ -149,6 +149,18 @@ div.bbcodes a.bbcode:hover {
 .editor.ace_editor {
   font-size: 16px;
 }
+@media screen and (max-width: 640px) {
+  .sidebar-nav .nav-list li a {
+    font-size: 13px;
+    padding: 5px 7px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .sidebar-nav .nav-list li a {
+    font-size: 12px;
+    padding: 5px 7px;
+  }
+}
 @media screen and (max-width: 500px) {
   body, .sidebar-nav .nav-list > li > a {
     font-size: 11px;
