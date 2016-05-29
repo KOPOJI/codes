@@ -92,7 +92,7 @@ span.dynatree-active a {
   background: #e0e0e0;
   box-shadow: inset 0px 1px 0px 0px #ececec;
   padding: 10px;
-  margin: 0 -15px;
+  margin: 0 -10px;
   margin-bottom: 10px;
 }
 
@@ -155,16 +155,7 @@ div.bbcodes a.bbcode:hover {
     padding: 5px 7px;
   }
 }
-@media screen and (max-width: 575px) {
-  .sidebar-nav .nav-list li a {
-    font-size: 12px;
-    padding: 5px 7px;
-  }
-}
 @media screen and (max-width: 500px) {
-  body, .sidebar-nav .nav-list > li > a {
-    font-size: 11px;
-  }
   .navbar-nav {
     margin: 0 -15px;
   }
@@ -172,9 +163,6 @@ div.bbcodes a.bbcode:hover {
     padding-top: 5px;
     padding-bottom: 5px;
     line-height: 15px;
-  }
-  .apple_pagination {
-    margin: 15px 0;
   }
   .editor.ace_editor {
     font-size: 13px;
@@ -185,9 +173,6 @@ div.bbcodes a.bbcode:hover {
   .post h6 {
     margin-top: 15px;
     margin-bottom: 15px;
-  }
-  .sidebar-nav .nav-list > li > a {
-    padding: 5px 7px;
   }
 }
 label {
@@ -258,7 +243,29 @@ label {
 .nav-menu {
   padding-left: 10px !important;
   padding-right: 10px !important;
+  z-index: 999;
 }
 #page-content-wrapper h1 {
   font-size: 30px;
+}
+
+.toggle-nav-menu {
+  float: left;
+  display: inline-block;
+}
+
+@media (max-width: $screen-xs-max) {
+  #wrapper .nav-menu {
+    position: absolute;
+    left: 0;
+    display: none;
+  }
+  .well {
+    background-color: #FAFAFA;
+    padding-bottom: 5px;
+  }
+  .sidebar-nav .nav-list > li > a {
+    padding: 7px;
+    margin: 3px 0;
+  }
 }

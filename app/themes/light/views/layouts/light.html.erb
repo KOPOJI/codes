@@ -43,6 +43,7 @@
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png' %>
     <%= favicon_link_tag 'favicon.ico', rel: 'shortcut icon' %>
 
+    <%= stylesheet_link_tag 'light/all', media: 'all', type: 'text/css', 'data-turbolinks-track' => true %>
 
   <% end %>
 
@@ -61,7 +62,7 @@
 
     <%= render '/codes/codes_list' %>
 
-    <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10 content" id="page-content-wrapper">
+    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 content" id="page-content-wrapper">
       <% if title.present? %>
         <h1><%= title %></h1>
       <% end %>
@@ -79,12 +80,16 @@
   <div class="row footer">
     <div class="navbar-fixed-bottom row-fluid">
       <div class="navbar-inner">
+        <button type="button" class="navbar-toggle collapsed toggle-nav-menu" data-toggle="collapse" title="<%= t 'show_hide_left_menu' %>">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <div class="container">
           Just for fun. Just for save.
         </div>
       </div>
     </div>
-    <%= render 'layouts/metrika' if Rails.env.production? %>
   </div>
 
 </div>
@@ -95,8 +100,10 @@
     </a>
 </span>
 
-      <%= stylesheet_link_tag 'light/all', media: 'all', type: 'text/css', 'data-turbolinks-track' => true %>
-      <%= javascript_include_tag 'light/all', type: 'text/javascript', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'light/all', type: 'text/javascript', 'data-turbolinks-track' => true %>
+
+  <%= render 'layouts/metrika' if Rails.env.production? %>
+
 </body>
 </html>
 <% end %>
