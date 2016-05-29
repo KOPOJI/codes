@@ -29,6 +29,17 @@ body, body > .container-fluid { min-height: 100%; }
   font-size: 17px;
   text-shadow: -1px 1px 7px #000;
 }
+.footer .navbar-inner {
+  .container {
+    padding: 7px;
+    padding-bottom: 0;
+  }
+  .navbar-toggle {
+    padding: 10px 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
 .navbar .nav .active > a, .navbar .nav .active > a:hover {
   background: #206484 !important;
 }
@@ -164,9 +175,6 @@ div.bbcodes a.bbcode:hover {
     padding-bottom: 5px;
     line-height: 15px;
   }
-  .editor.ace_editor {
-    font-size: 13px;
-  }
   .post {
     margin-left: 0;
   }
@@ -254,6 +262,10 @@ label {
   display: inline-block;
 }
 
+.ace_scroller {
+  padding-left: 1px;
+}
+
 @media (max-width: $screen-xs-max) {
   #wrapper .nav-menu {
     position: absolute;
@@ -269,6 +281,32 @@ label {
     margin: 3px 0;
   }
   .ace_content {
-    font-size: 13px;
+    font-size: 12px;
+  }
+  .editor.ace_editor, .ace_text-input, .ace_gutter, .ace_layer, .ace_gutter-cell {
+     font-size: 12px;
+   }
+  .ace_gutter-layer {
+    text-align: center !important;
+  }
+  .ace_gutter-cell {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    margin-right: 3px;
+  }
+  .ace_gutter-cell.ace_error {
+    background-image: none !important;
+  }
+  .ace_folding-enabled .ace_fold-widget {
+    display: none !important;
+  }
+  .footer .navbar-inner {
+    .navbar-toggle {
+      padding: 7px 20px;
+    }
+    .container {
+      padding: 6px;
+      font-size: 13px;
+    }
   }
 }
