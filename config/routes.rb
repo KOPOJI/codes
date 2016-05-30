@@ -6,9 +6,9 @@ CodesApp::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-=begin
-  locales = I18n.available_locales.join('|')
 
+  locales = I18n.available_locales.join('|')
+=begin
   root to: redirect("/#{I18n.default_locale}/", status: 301), as: :redirected_root
   get '/codes' => redirect("/#{I18n.default_locale}/", status: 301)
 
