@@ -6,6 +6,7 @@ CodesApp::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+=begin
   locales = I18n.available_locales.join('|')
 
   root to: redirect("/#{I18n.default_locale}/", status: 301), as: :redirected_root
@@ -23,6 +24,7 @@ CodesApp::Application.routes.draw do
   }, constraints: lambda {
       |req| !(req.path =~ /^\/?(?:#{locales})\/?$/i) && !(req.path =~ /\.(?:html?|xml|s?css|js|jpe?g|png|gif)/i)
   }, status: 301
+=end
 
   scope '(:locale)', locale: /#{locales}/i do
 
