@@ -22,7 +22,7 @@
             <legend> <%= t 'Attachments' %> </legend>
             <% @attachments.each do |image| %>
                 <% cache image do %>
-                  <%= link_to image_path(image.image), rel: 'prettyPhoto[]' do %>
+                  <%= link_to image_path(image.image) do %>
                       <%= image_tag image.image, class: 'attach' %>
                   <% end %>
                 <% end %>

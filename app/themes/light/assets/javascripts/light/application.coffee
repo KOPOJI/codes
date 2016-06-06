@@ -7,7 +7,7 @@ $(window).on 'load', ->
   )
 
 jQuery ->
-  $("a[rel^='prettyPhoto'] img.attach").parent("a[rel^='prettyPhoto']").fancybox()
+  $("a img.attach").parent("a").fancybox()
   $('.toggle-nav-menu').on 'click', ->
     $('.nav-menu').toggle()
     if($('#page-content-wrapper').hasClass('col-md-10'))
