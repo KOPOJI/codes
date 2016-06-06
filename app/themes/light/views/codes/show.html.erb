@@ -34,13 +34,27 @@
 
   <% #end %>
 
+    <% tags = title.gsub(/[^a-z]/i, ' ').split(/[_ !.,:;]+/) %>
     <% title "#{t 'Show code'} #{title}" %>
     <% description "#{t 'Show code'} #{title}, #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
-    <% keywords    "#{t 'Show code'} #{title}, #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
+    <% keywords    "#{t 'Show code'} #{title},#{t 'code'}#{tags.join(',')}" %>
 
+    <% set_meta_tags og: {type: 'article'} %>
+    <% article = {
+        published_time: @code.created_at,
+        modified_time: @code.updated_at,
+        expiration_time: Time.zone.now + 5.day,
+        tag: tags,
+    }
+    article[:section] = '1C-Bitrix' if title =~ /bitrix/i
+
+    %>
     <% unless @code.user.nil? %>
         <% set_meta_tags author: "#{request.base_url}/#{locale}/user/#{@code.user.id}#{url_suffix}" %>
+        <% article[:author] = ["#{request.base_url}/#{locale}/user/#{@code.user.id}#{url_suffix}"] %>
     <% end %>
+
+    <% set_meta_tags og: {article: article} %>
 
 <% end %>
 
