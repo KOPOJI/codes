@@ -3,6 +3,13 @@
 <% content_for :title, "#{t 'Show profile of'} #{@user.username}" %>
 <% description "#{t 'Show profile of'} #{@user.username}" %>
 <% keywords    "#{t 'Show profile of'} #{@user.username}" %>
+<% set_meta_tags og: {
+    type: 'profile',
+    profile: {
+        username: @user.username,
+        first_name: @user.profile.name,
+    }
+} %>
 
 <h3><%= @user.username %> <%= user_status_image @user %></h3>
 <div id="profilePage">
