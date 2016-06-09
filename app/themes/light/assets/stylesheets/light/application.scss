@@ -323,3 +323,13 @@ label {
     }
   }
 }
+.index-page {
+  font-size: 15px;
+}
+.index-page > div:first-child {
+  font-size:17px;
+}
+#page-content-wrapper .index-page h1 {
+  font-size: 23px;
+  display: inline-block;
+}
