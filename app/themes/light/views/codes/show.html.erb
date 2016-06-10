@@ -34,7 +34,7 @@
 
   <% #end %>
 
-    <% tags = title.gsub(/[^a-z]/iu, ' ').split(/[_ !.,:;]+/u) %>
+    <% tags = title.gsub(/[^а-яА-ЯЁёA-Za-z]/u, ' ').split(/[_ !.,:;]+/u) %>
     <% title "#{t 'Show code'} #{title}" %>
     <% description "#{t 'Show code'} #{title}, #{t 'added by'} #{@code.user.nil? ? t('Guest') : @code.user.username}" %>
     <% keywords    "#{t 'Show code'} #{title},#{t 'code'}, #{tags.join(',')}" %>
