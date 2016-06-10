@@ -25,6 +25,7 @@
       description: :description,
       locale: (locale == :ru ? 'ru_RU' : 'en_US'),
       type: 'website',
+      image: image_url('light/logo.png'),
       site_name: "#{app_name} - #{t('site_name')}".html_safe,
       url: request.base_url + trailing_slash(request.path),
   } %>

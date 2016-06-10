@@ -274,6 +274,8 @@ label {
       line-height: 18px;
       font-weight: bold;
       height: 35px;
+      width: 120px;
+      padding-top: 4px;
     }
     .navbar-toggle {
       padding: 0 8px;
@@ -332,4 +334,13 @@ label {
 #page-content-wrapper .index-page h1 {
   font-size: 23px;
   display: inline-block;
+}
+
+.navbar .navbar-brand {
+  width: 190px;
+  padding-top: 5px;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
