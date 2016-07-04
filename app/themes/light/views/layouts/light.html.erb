@@ -30,7 +30,7 @@
       url: request.base_url + trailing_slash(request.path),
   } %>
 
-  <% cache "head#{request.original_fullpath}" do %>
+  <%# cache "head#{request.original_fullpath}" do %>
 
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
 
     <%= stylesheet_link_tag 'light/all', media: 'all', type: 'text/css', 'data-turbolinks-track' => true %>
 
-  <% end %>
+  <%# end %>
 
   <%= csrf_meta_tags %>
 
@@ -74,7 +74,7 @@
 
   </div>
 
-  <% cache "footer#{request.original_fullpath}" do %>
+  <%# cache "footer#{request.original_fullpath}" do %>
 
   <div class="clearfix"></div>
 
@@ -107,4 +107,4 @@
 
 </body>
 </html>
-<% end %>
+<%# end %>
