@@ -26,7 +26,7 @@ CodesApp::Application.routes.draw do
   }, status: 301
 =end
 
-  scope '(:locale)', locale: /#{locales}/i, constraints: {format: 'html'} do
+  scope '(:locale)', locale: /#{locales}/i, constraints: {format: 'html'}, defaults: {format: 'html'} do
 
     root 'codes#index'
 
