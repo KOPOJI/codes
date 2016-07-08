@@ -15,7 +15,7 @@
         </ul>
       </div>
     <% end %>
-  <% cache @code do %>
+
     <div class="field">
       <%= f.label t(:title) %>
       <%= f.text_field :title, style: 'width: 400px', class: 'form-input form-control' %>
@@ -80,4 +80,3 @@
       <%= f.submit t(@code.new_record? ? 'Insert' : 'Update'), class: 'button btn btn-primary' %>
     </div>
   <% end %>
-<% end %>
