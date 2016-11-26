@@ -30,9 +30,6 @@
       url: request.base_url + trailing_slash(request.path),
   } %>
 
-  <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="<%= request.base_url + trailing_slash(request.path) %>"/>
-  <meta itemprop="name" content="<%= "#{app_name} - #{t('site_name')}".html_safe %>">
-
   <%# cache "head#{request.original_fullpath}" do %>
 
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">

@@ -20,8 +20,9 @@
         <span itemprop="dateModified" content="<%= @code.updated_at %>"><%= @code.updated_at.to_s(:ru_datetime) %></span>
       </div>
 
+     <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="<%= request.base_url + trailing_slash(request.path) %>" content="<%= title %>"/>
      <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization" style="display:none;">
-       <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+       <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
          <%= image_tag image_url('light/logo.png'), alt: app_name, itemprop: 'url image' %>
          <meta itemprop="width" content="160">
          <meta itemprop="height" content="50">
