@@ -19,14 +19,14 @@
         <%= t 'Last edited' %>:
         <span itemprop="dateModified" content="<%= @code.updated_at %>"><%= @code.updated_at.to_s(:ru_datetime) %></span>
       </div>
-         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-           02
-           <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject" style="display:none;">
-             <%= image_tag image_url('light/logo.png'), alt: app_name, itemprop: 'url image' %>
-             <meta itemprop="width" content="160">
-             <meta itemprop="height" content="50">
-           </div>
-         </div>
+
+     <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization" style="display:none;">
+       <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+         <%= image_tag image_url('light/logo.png'), alt: app_name, itemprop: 'url image' %>
+         <meta itemprop="width" content="160">
+         <meta itemprop="height" content="50">
+       </div>
+     </div>
 
         <%= raw nl2br(parse_bb_codes @code.code) %>
 
