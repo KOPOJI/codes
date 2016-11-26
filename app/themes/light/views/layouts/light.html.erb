@@ -29,8 +29,9 @@
       site_name: "#{app_name} - #{t('site_name')}".html_safe,
       url: request.base_url + trailing_slash(request.path),
   } %>
-  <meta itemprop="name" content="<%= "#{app_name} - #{t('site_name')}".html_safe %>">
+
   <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="<%= request.base_url + trailing_slash(request.path) %>"/>
+  <meta itemprop="name" content="<%= "#{app_name} - #{t('site_name')}".html_safe %>">
 
   <%# cache "head#{request.original_fullpath}" do %>
 
