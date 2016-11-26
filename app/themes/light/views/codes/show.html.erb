@@ -8,7 +8,7 @@
     <% title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}" %>
     <% content_for :title, "#{t 'Show code'} #{title}" %>
     <% content_for :itemname, ' itemprop="name"'.html_safe %>
-    <% content_for :itemskope, ' itemscope itemtype="http://schema.org/Article"'.html_safe %>
+    <% content_for :itemscope, ' itemscope itemtype="http://schema.org/Article"'.html_safe %>
 
        <div class="post" itemprop="articleBody">
 
