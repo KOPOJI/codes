@@ -7,7 +7,7 @@
     <% title = @code.title.empty? ? "#{t 'Code'} ##{@code.id}" : @code.title %>
     <% title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}" %>
     <% content_for :title, "#{t 'Show code'} #{title}" %>
-    <% content_for :itemname, ' itemprop="name"'.html_safe %>
+    <% content_for :itemname, '  itemprop="headline"'.html_safe %>
     <% content_for :itemscope, ' itemscope itemtype="http://schema.org/Article"'.html_safe %>
 
        <div class="post" itemprop="articleBody">
@@ -16,8 +16,17 @@
         <%= t 'Added by' %>
         <span itemprop="author" itemscope itemtype="http://schema.org/Person"><b itemprop="name"><%= @code.user.nil? ? t('Guest') : @code.user.username %></b></span>
         <span itemprop="datePublished" content="<%= @code.created_at %>"><%= @code.created_at.to_s(:ru_datetime) %></span><br>
-        <%= t 'Last edited' %>: <%= @code.updated_at.to_s(:ru_datetime) %>
+        <%= t 'Last edited' %>:
+        <span itemprop="dateModified" content="<%= @code.updated_at %>"><%= @code.updated_at.to_s(:ru_datetime) %></span>
       </div>
+         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+           02
+           <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject" style="display:none;">
+             <%= image_tag image_url('light/logo.png'), alt: app_name, itemprop: 'url image' %>
+             <meta itemprop="width" content="160">
+             <meta itemprop="height" content="50">
+           </div>
+         </div>
 
         <%= raw nl2br(parse_bb_codes @code.code) %>
 

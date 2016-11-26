@@ -13,7 +13,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "/#{locale}/", class: 'navbar-brand', title: app_name do %>
+        <%= link_to "/#{locale}/", class: 'navbar-brand', title: app_name, itemprop: 'name' do %>
             <%= image_tag image_url('light/logo.png'), alt: app_name %>
         <% end %>
         <span class="visible-xs-inline clearfix"></span>
