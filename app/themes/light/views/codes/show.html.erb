@@ -27,6 +27,11 @@
          <meta itemprop="width" content="160">
          <meta itemprop="height" content="50">
        </div>
+       <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+         <%= image_tag image_url('light/logo.png'), alt: app_name, itemprop: 'url image' %>
+         <meta itemprop="width" content="160">
+         <meta itemprop="height" content="50">
+       </div>
        <meta itemprop="name" content="<%= "#{app_name} - #{t('site_name')}".html_safe %>">
      </div>
 
