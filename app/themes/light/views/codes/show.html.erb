@@ -7,11 +7,15 @@
     <% title = @code.title.empty? ? "#{t 'Code'} ##{@code.id}" : @code.title %>
     <% title.sub! /unnamed(?=\s*?#\d+)/i, "#{t 'Code'}" %>
     <% content_for :title, "#{t 'Show code'} #{title}" %>
+    <% content_for :itemname, ' itemprop="name"'.html_safe %>
+    <% content_for :itemskope, ' itemscope itemtype="http://schema.org/Article"'.html_safe %>
 
-       <div class="post">
+       <div class="post" itemprop="articleBody">
 
       <div style="font-size:10px;font-style:italic;border-bottom: 1px solid #CCC;padding:3px;margin:3px;padding-left:15px">
-        <%= t 'Added by' %> <b><%= @code.user.nil? ? t('Guest') : @code.user.username %></b> <%= @code.created_at.to_s(:ru_datetime) %><br>
+        <%= t 'Added by' %>
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person"><b itemprop="name"><%= @code.user.nil? ? t('Guest') : @code.user.username %></b></span>
+        <span itemprop="datePublished" content="<%= @code.created_at %>"><%= @code.created_at.to_s(:ru_datetime) %></span><br>
         <%= t 'Last edited' %>: <%= @code.updated_at.to_s(:ru_datetime) %>
       </div>
 
