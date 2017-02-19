@@ -49,7 +49,8 @@ gem 'sitemap_generator'
 #users
 gem 'devise'
 gem 'cancancan'
-gem 'simple_captcha2', require: 'simple_captcha'
+#gem 'simple_captcha2', require: 'simple_captcha'
+gem 'httparty', '~> 0.13.7'
 # Use mysql as the database for Active Record
 group :development do
   gem 'mysql2', '~> 0.3.18'

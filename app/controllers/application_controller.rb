@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   require 'will_paginate/array'
 
-  include SimpleCaptcha::ControllerHelpers
+ # include SimpleCaptcha::ControllerHelpers
 
   include ApplicationHelper
 
@@ -73,4 +73,6 @@ class ApplicationController < ActionController::Base
   def user_activity
     current_user.try :touch
   end
+
+  require 'recaptcha.rb'
 end

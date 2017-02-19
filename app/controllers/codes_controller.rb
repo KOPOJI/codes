@@ -59,7 +59,8 @@ class CodesController < ApplicationController
 
     #my little anti-spam-hack =)
     unless user_signed_in?
-      unless simple_captcha_valid?
+      #unless simple_captcha_valid?
+      unless valid_recaptcha?
         @code.errors[:base] << I18n.t('simple_captcha.message.default')
         render :new and return
       end
@@ -170,6 +171,11 @@ class CodesController < ApplicationController
     else
       params.require(:code).permit(:code, :title, attachments_attributes: [:id, :code_id, :image])
     end
+  end
+
+  def valid_recaptcha?
+    response = Recaptcha.verify(params)
+    response.code == 200 and  response['success']
   end
 
 end

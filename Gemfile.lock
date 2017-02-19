@@ -96,6 +96,9 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -124,6 +127,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    multi_xml (0.6.0)
     mysql2 (0.3.21)
     nested_form (0.3.2)
     nokogiri (1.6.8)
@@ -181,8 +185,6 @@ GEM
     seed_dump (3.2.4)
       activerecord (>= 4)
       activesupport (>= 4)
-    simple_captcha2 (0.4.0)
-      rails (>= 4.1)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -224,6 +226,7 @@ DEPENDENCIES
   coffee-rails
   devise
   fancybox2-rails (~> 0.2.8)
+  httparty (~> 0.13.7)
   jbuilder
   jquery-rails
   meta-tags
@@ -235,13 +238,15 @@ DEPENDENCIES
   sass-rails
   sdoc
   seed_dump
-  simple_captcha2
   simple_form
   sitemap_generator
   themes_on_rails
   uglifier
   web-console
   will_paginate
+
+RUBY VERSION
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.0.rc

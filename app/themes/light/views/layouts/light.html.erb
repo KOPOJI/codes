@@ -49,7 +49,6 @@
   <%# end %>
 
   <%= csrf_meta_tags %>
-
 </head>
 <body>
 
@@ -101,7 +100,9 @@
     </a>
 </span>
 
-  <%= javascript_include_tag 'light/all', type: 'text/javascript', async: true, 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'light/all', type: 'text/javascript', async: true, defer: true, 'data-turbolinks-track' => true %>
+
+  <script src='https://www.google.com/recaptcha/api.js?hl=<%= locale %>' async defer></script>
 
   <%= render 'layouts/metrika' if Rails.env.production? %>
 
