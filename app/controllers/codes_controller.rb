@@ -88,6 +88,12 @@ class CodesController < ApplicationController
 
   def update
     if can_edit? @code
+      unless user_signed_in?
+        unless valid_recaptcha?
+          @code.errors[:base] << I18n.t('simple_captcha.message.default')
+          render :new and return
+        end
+      end
       respond_to do |format|
         #add admin user_id to code
         @code.user_id = current_user.id if !params[:add_admin_id].nil? and user_signed_in? and current_user.admin?
