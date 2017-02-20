@@ -65,7 +65,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:sign_up) << :username << 'g-recaptcha-response'
+
+  end
+
+  def valid_recaptcha?
+    response = Recaptcha.verify(params)
+    response.code == 200 and response['success']
   end
 
   private

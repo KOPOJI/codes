@@ -26,6 +26,13 @@
       <%= f.label :password_confirmation, t(:password_confirmation) %>
       <%= f.password_field :password_confirmation, required: true, class: 'form-input form-control' %>
     </div>
+
+    <% if false %>
+    <div>
+      <div class="g-recaptcha" data-sitekey="6Le5IRYUAAAAANeoP_ebBg6fz1hZqR2KmfAroua4"></div>
+      <%= f.hidden_field :remoteip, value: request.remote_ip %>
+    </div>
+    <% end %>
 <br>
     <div>
       <%= f.submit t('Sign up'), class: 'button btn btn-primary' %>

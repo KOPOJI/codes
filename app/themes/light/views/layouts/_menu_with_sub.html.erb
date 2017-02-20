@@ -28,6 +28,7 @@
                 <li>
                   <%= link_to t('Edit code'), create_url('codes', @code.id, 'edit') unless @code.nil? or @code.id.nil? %>
                 </li>
+                <li><%= link_to t('Search code'), create_url('codes', 'search') %></li>
               </ul>
             </li>
 

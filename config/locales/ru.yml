@@ -1,5 +1,9 @@
 ru:
 
+  Search code: 'Поиск кода'
+  input code title: 'введите часть заголовка кода'
+  input code: 'введите часть кода'
+
   show_hide_left_menu: 'Показать/скрыть левое меню'
   error_404: ' Ошибка 404 - Страница не найдена'
   The page you were looking for doesn't exist (404): 'Запрашиваемая страница не найдена (ошибка 404)'

@@ -35,6 +35,20 @@ class CodesController < ApplicationController
     end
   end
 
+  def search
+    @code = Code.new
+    @result = []
+    if params[:code].present? and (params[:code]['code'].present? or params[:code]['title'].present?)
+      s = params[:code]
+      if s['code'].present? and s['title'].blank?
+        @result = Code.where('code LIKE ?', "%#{s['code']}%")
+      elsif s['title'].present? and s['code'].blank?
+        @result = Code.where('title LIKE ?', "%#{s['title']}%")
+      else
+        @result = Code.where('code LIKE ? AND title LIKE ?', "%#{s['code']}%", "%#{s['title']}%")
+      end
+    end
+  end
 
   def find_all_by_user_id
     begin
@@ -177,11 +191,6 @@ class CodesController < ApplicationController
     else
       params.require(:code).permit(:code, :title, attachments_attributes: [:id, :code_id, :image])
     end
-  end
-
-  def valid_recaptcha?
-    response = Recaptcha.verify(params)
-    response.code == 200 and  response['success']
   end
 
 end

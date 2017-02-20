@@ -8,29 +8,13 @@ CodesApp::Application.routes.draw do
 
 
   locales = I18n.available_locales.join('|')
-=begin
-  root to: redirect("/#{I18n.default_locale}/", status: 301), as: :redirected_root
-  get '/codes' => redirect("/#{I18n.default_locale}/", status: 301)
-
-  get '/codes/:id' => redirect('/ru/codes/%{id}.html', status: 301)
-  get '/codes/:id/edit' => redirect('/ru/codes/%{id}/edit.html', status: 301)
-  get '/attachments/:id' => redirect('/ru/attachments/%{id}.html', status: 301)
-  get '/attachments' => redirect('/ru/attachments.html', status: 301)
-  get '/attachments/:id/edit' => redirect('/ru/attachments/%{id}/edit.html', status: 301)
-
-  get '*path' => redirect { |params, req|
-    return "#{req.path}/?page=#{req.query_parameters[:page]}" if (req.path =~ /^\/?(?:#{locales})$/i) && req.query_parameters[:page].present?
-    req.query_parameters[:page].present? ? "#{req.path}.html?page=#{req.query_parameters[:page]}" : "#{req.path}.html"
-  }, constraints: lambda {
-      |req| !(req.path =~ /^\/?(?:#{locales})\/?$/i) && !(req.path =~ /\.(?:html?|xml|s?css|js|jpe?g|png|gif)/i)
-  }, status: 301
-=end
 
   scope '(:locale)', locale: /#{locales}/i, constraints: {format: 'html'}, defaults: {format: 'html'} do
 
     root 'codes#index'
 
     match '/codes/delete_interval', to: 'codes#delete_interval', via: [:get, :post], format: 'html'
+    match '/codes/search', to: 'codes#search', via: [:get, :post], format: 'html'
 
     get '/pm' => redirect('/pm/inbox.html')
     get '/pm/:action', to: 'private_messages#:action', constraints: {action: /(?:out|in)box/i }, format: 'html'
@@ -45,15 +29,16 @@ CodesApp::Application.routes.draw do
     delete '/codes/delete/:id', to: 'codes#destroy', format: 'html'
     match '/user/profile', to: 'users#profile', as: 'profile', via: [:get, :patch], format: 'html'
 
-    devise_for :users, path: 'user', format: 'html', path_names: {
+    devise_for :users, path: 'user', alias: 'users', format: 'html', path_names: {
         sign_in: 'login',
         sign_out: 'logout',
         sign_up: 'register',
         password: 'secret',
         confirmation: 'verification',
         unlock: 'unblock',
-        registration: ''
+        registrations: 'register'
     }
+    #, controllers: { registrations: 'registrations' }
 
     resources :codes, :attachments, format: 'html'
 
