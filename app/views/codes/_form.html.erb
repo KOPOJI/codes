@@ -73,7 +73,7 @@
     <input type="checkbox" name="add_admin_id" id="aid" value="1"> <label for="aid">Add Admin Id</label>
   <% end %>
 
-      <%= show_simple_captcha distortion: 'high' unless user_signed_in? %>
+      <%= show_simple_captcha distortion: 'high' unless (user_signed_in? and can_edit? @code, true) %>
 
   <div class="actions" style="margin-top: 20px;">
     <%= f.submit t(@code.new_record? ? 'Insert' : 'Update'), class: 'button' %>
