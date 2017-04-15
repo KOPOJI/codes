@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = 'https://savecode.ru'
+SitemapGenerator::Sitemap.default_host = 'http://savecode.ru'
 
 SitemapGenerator::Sitemap.sitemaps_path = 'yandex'
 
