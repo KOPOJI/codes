@@ -75,7 +75,7 @@
     <% end %>
 
         <%#= show_simple_captcha distortion: 'high' unless user_signed_in? %>
-        <% unless user_signed_in? %>
+        <% unless user_signed_in? or current_user.admin? %>
           <div class="g-recaptcha" data-sitekey="6Le5IRYUAAAAANeoP_ebBg6fz1hZqR2KmfAroua4"></div>
           <%= f.hidden_field :remoteip, value: request.remote_ip %>
         <% end %>
