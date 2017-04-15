@@ -72,7 +72,7 @@ class CodesController < ApplicationController
     @code.user_id = current_user.id if user_signed_in?
 
     #my little anti-spam-hack =)
-    unless user_signed_in? or current_user.admin?
+    unless user_signed_in? and current_user.admin?
       #unless simple_captcha_valid?
       unless valid_recaptcha?
         @code.errors[:base] << I18n.t('simple_captcha.message.default')
