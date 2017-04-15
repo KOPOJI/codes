@@ -8,8 +8,8 @@ Disallow: /pm
 Disallow: /*edit*
 Disallow: /language*
 
-Host: https://savecode.ru
-Sitemap: https://savecode.ru/sitemap.xml.gz
+Host: http://savecode.ru
+Sitemap: http://savecode.ru/sitemap.xml.gz
 
 User-agent: Yandex
-Sitemap: https://savecode.ru/yandex/sitemap.xml.gz
+Sitemap: http://savecode.ru/yandex/sitemap.xml.gz
